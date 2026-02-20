@@ -98,7 +98,7 @@
     "start": "node bin/mega-brain.js",
     "install-wizard": "node bin/mega-brain.js install",
     "validate": "node bin/mega-brain.js validate",
-    "prepublishOnly": "node -e \"const{execSync:e}=require('child_process');try{e('find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null',{stdio:'ignore'})}catch{}\""
+    "prepublishOnly": "node bin/pre-publish-gate.js"
   },
   "keywords": [
     "ai",

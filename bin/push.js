@@ -81,10 +81,16 @@ const LAYER2_EXCLUDED_PERSONAS = ['g4-educacao', 'full-sales-system', 'grupo-sil
 
 function git(cmd, opts = {}) {
   try {
+    // Signal pre-push hook that push.js already validated this push
+    const env = cmd.startsWith('push ')
+      ? { ...process.env, MEGA_BRAIN_PUSH_VALIDATED: 'true', ...opts.env }
+      : { ...process.env, ...opts.env };
+
     return execSync(`git ${cmd}`, {
       cwd: PROJECT_ROOT,
       encoding: 'utf-8',
       stdio: opts.silent ? 'pipe' : 'inherit',
+      env,
       ...opts,
     });
   } catch (err) {
