@@ -92,7 +92,8 @@
     ".github/layer2-manifest.txt",
     ".gitignore",
     ".gitattributes",
-    ".claudeignore"
+    ".claudeignore",
+    ".gitleaks.toml"
   ],
   "scripts": {
     "start": "node bin/mega-brain.js",
