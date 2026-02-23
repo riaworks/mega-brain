@@ -9,6 +9,8 @@
  *   npx mega-brain-ai validate   - Validate MoneyClub email
  *   npx mega-brain-ai push       - Push to Layer 1/2/3 remote
  *   npx mega-brain-ai upgrade    - Upgrade Community to Premium
+ *   npx mega-brain-ai status     - Show Pro license status
+ *   npx mega-brain-ai features   - List available vs locked features
  *   npx mega-brain-ai --help     - Show help
  */
 
@@ -60,6 +62,12 @@ async function main() {
       console.log('\n  Funcionalidade de upgrade será disponibilizada em breve.');
       console.log('  Por enquanto, reinstale com: mega-brain install\n');
     }
+  } else if (command === 'status') {
+    const { showStatus } = await import('./lib/pro-commands.js');
+    showStatus();
+  } else if (command === 'features') {
+    const { showFeatures } = await import('./lib/pro-commands.js');
+    showFeatures();
   } else {
     console.error(`\n  Comando desconhecido: ${command}`);
     showHelp();
@@ -77,6 +85,8 @@ function showHelp() {
     validate    Validar email MoneyClub (mega-brain validate <email>)
     push        Push para Layer 1/2/3 (mega-brain push [--layer N])
     upgrade     Atualizar Community para Premium
+    status      Mostrar status da licenca Pro
+    features    Listar features disponiveis vs bloqueadas
     --help      Mostrar esta mensagem
 
   Layers:

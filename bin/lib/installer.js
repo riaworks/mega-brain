@@ -23,6 +23,7 @@ import ora from 'ora';
 import boxen from 'boxen';
 import gradient from 'gradient-string';
 import { validateEmail, getErrorMessage, resetAttempts } from './validate-email.js';
+import { writeLicense, maskEmail as maskLicenseEmail } from './license.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -52,6 +53,7 @@ export async function runInstaller(version, projectName) {
   // STEP 2: Email Validation (PREMIUM only)
   // ──────────────────────────────────────────────────────────
   let buyerName = '';
+  let buyerEmail = '';
   let premiumToken = null;
 
   if (isPremium) {
@@ -73,6 +75,7 @@ export async function runInstaller(version, projectName) {
 
       if (result.valid) {
         buyerName = result.name || 'Membro';
+        buyerEmail = email.trim();
         premiumToken = result.premium_token || null;
         spinner.succeed(chalk.green(`Bem-vindo, ${chalk.bold(buyerName)}! Acesso PREMIUM confirmado.`));
         if (result.installCount > 1) {
@@ -212,6 +215,24 @@ export async function runInstaller(version, projectName) {
   }
 
   // ──────────────────────────────────────────────────────────
+  // Write license.json
+  // ──────────────────────────────────────────────────────────
+  if (isPremium) {
+    writeLicense({
+      tier: 'pro',
+      email: buyerEmail ? maskLicenseEmail(buyerEmail) : null,
+      activated_at: new Date().toISOString(),
+      validated_at: new Date().toISOString(),
+      features: ['knowledge', 'playbooks', 'persons', 'cargo', 'processing'],
+    });
+  } else {
+    writeLicense({
+      tier: 'community',
+      activated_at: new Date().toISOString(),
+    });
+  }
+
+  // ──────────────────────────────────────────────────────────
   // Summary
   // ──────────────────────────────────────────────────────────
   console.log();
@@ -220,6 +241,76 @@ export async function runInstaller(version, projectName) {
   } else {
     showPostInstallCommunity();
   }
+}
+
+/**
+ * Upgrade from Community to Premium
+ */
+export async function runUpgrade(version) {
+  const { readLicense, writeLicense, maskEmail: maskUpgradeEmail } = await import('./license.js');
+  const { isProInstalled } = await import('../utils/pro-detector.js');
+
+  const license = readLicense();
+  const installed = isProInstalled();
+
+  if (installed && license?.tier === 'pro') {
+    console.log(chalk.green('\n  Mega Brain Pro ja esta instalado e ativo!'));
+    console.log(chalk.dim('  Use: mega-brain validate <email> para revalidar.\n'));
+    return;
+  }
+
+  console.log(chalk.cyan('\n  Upgrade para PREMIUM\n'));
+
+  // Email validation
+  resetAttempts();
+  let validated = false;
+  let premiumToken = null;
+
+  while (!validated) {
+    const { email } = await inquirer.prompt([{
+      type: 'input',
+      name: 'email',
+      message: chalk.cyan('Email cadastrado no MoneyClub:'),
+      validate: (input) => input.trim() ? true : chalk.red('Email nao pode estar vazio.'),
+    }]);
+
+    const spinner = ora({ text: 'Verificando acesso...', color: 'cyan' }).start();
+    const result = await validateEmail(email.trim());
+
+    if (result.valid) {
+      premiumToken = result.premium_token || null;
+      spinner.succeed(chalk.green(`Acesso confirmado, ${result.name || 'Membro'}!`));
+
+      writeLicense({
+        tier: 'pro',
+        email: maskUpgradeEmail(email.trim()),
+        activated_at: new Date().toISOString(),
+        validated_at: new Date().toISOString(),
+        features: ['knowledge', 'playbooks', 'persons', 'cargo', 'processing'],
+      });
+
+      validated = true;
+    } else {
+      spinner.fail(chalk.red(getErrorMessage(result.reason)));
+      if (result.reason === 'max_attempts_exceeded') process.exit(1);
+      const { retry } = await inquirer.prompt([{
+        type: 'confirm', name: 'retry', message: 'Tentar novamente?', default: true,
+      }]);
+      if (!retry) { process.exit(0); }
+    }
+  }
+
+  if (premiumToken) {
+    const targetDir = process.cwd();
+    const premiumSpinner = ora({ text: 'Baixando conteudo premium...', color: 'magenta' }).start();
+    try {
+      await fetchPremiumContent(targetDir, premiumToken, premiumSpinner);
+    } catch (err) {
+      premiumSpinner.warn(chalk.yellow(`Erro: ${err.message}`));
+    }
+  }
+
+  showPostInstallPremium('Membro');
 }
 
 /**
