@@ -23,6 +23,11 @@ import json
 from pathlib import Path
 from datetime import datetime
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 MISSION_CONTROL = PROJECT_ROOT / '.claude' / 'mission-control'
 LEDGER_PATH = PROJECT_ROOT / '.claude' / 'LEDGER.md'
@@ -145,19 +150,20 @@ def main():
     Reads JSON from stdin, outputs JSON to stdout.
     """
     try:
-        input_data = sys.stdin.read()
-        hook_input = json.loads(input_data) if input_data else {}
-
         issues = check_completeness()
 
         if issues:
-            feedback = "Tasks may be incomplete:\n" + "\n".join(f"  - {i}" for i in issues)
-            print(json.dumps({'continue': True, 'feedback': feedback}))
+            print("Tasks may be incomplete:")
+            for i in issues:
+                print(f"  - {i}")
         else:
-            print(json.dumps({'continue': True}))
+            print("All clear, no pending tasks detected.")
 
-    except Exception:
-        print(json.dumps({'continue': True}))
+        sys.exit(0)
+
+    except Exception as e:
+        print(f"Stop hook check error: {e}")
+        sys.exit(0)
 
 
 def cli_test():

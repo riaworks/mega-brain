@@ -24,6 +24,11 @@ import re
 from pathlib import Path
 from datetime import datetime
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 STATE_FILE = PROJECT_ROOT / '.claude' / 'ralph_wiggum_state.json'
 LOG_FILE = PROJECT_ROOT / 'logs' / 'ralph_wiggum.jsonl'

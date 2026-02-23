@@ -28,6 +28,11 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Optional, Tuple
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 # Adicionar path dos scripts
 # .claude/hooks/ -> .claude/ -> raiz do projeto
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', str(Path(__file__).parent.parent.parent)))

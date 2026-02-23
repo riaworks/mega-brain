@@ -26,6 +26,11 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+# Fix Windows cp1252 encoding — emojis crash without this
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 LOGS_PATH = PROJECT_ROOT / 'logs' / 'notifications'
 LOGS_PATH.mkdir(parents=True, exist_ok=True)

@@ -24,6 +24,11 @@ import re
 from pathlib import Path
 from datetime import datetime
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 # Paths
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 LOGS_PATH = PROJECT_ROOT / 'logs' / 'validation'

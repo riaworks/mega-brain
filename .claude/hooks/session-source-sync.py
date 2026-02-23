@@ -22,6 +22,11 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Tuple
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 ***REMOVED***=================================
 # CONFIGURAÇÃO
 ***REMOVED***=================================

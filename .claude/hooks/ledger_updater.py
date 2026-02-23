@@ -29,6 +29,11 @@ import re
 from pathlib import Path
 from datetime import datetime
 
+# Fix Windows cp1252 encoding
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 LEDGER_PATH = PROJECT_ROOT / ".claude" / "LEDGER.md"
 MISSION_STATE_PATH = (
