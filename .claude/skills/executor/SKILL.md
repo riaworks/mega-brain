@@ -87,7 +87,7 @@ mcp__clickup__clickup_update_task(
 
 ```bash
 # Enviar para NotificationHub
-curl -X POST https://<your-n8n-instance>.app.n8n.cloud/webhook/notification-hub \
+curl -X POST ${N8N_API_URL}/webhook/notification-hub \
   -d '{
     "event_type": "alert",
     "source": "AGENT-FINANCE",
