@@ -731,10 +731,10 @@ async function pushLayer3({ dryRun, message }) {
   // Step 4: Commit message
   const commitMsg = message || (await promptCommitMessage('backup: full state sync'));
 
-  // Step 5: git commit
+  // Step 5: git commit (bypass pre-commit hook via env var — this is a temporary commit)
   const commitSpinner = ora({ text: 'Criando commit de backup...', color: 'red' }).start();
   try {
-    git(`commit -m "${commitMsg.replace(/"/g, '\\"')}"`, { silent: true, stdio: 'pipe' });
+    git(`commit -m "${commitMsg.replace(/"/g, '\\"')}"`, { silent: true, stdio: 'pipe', env: { MEGA_BRAIN_LAYER_PUSH: 'true' } });
     commitSpinner.succeed(chalk.green('Commit criado'));
   } catch (err) {
     const output = (err.stdout || '') + (err.stderr || '');
