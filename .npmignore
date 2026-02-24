@@ -19,8 +19,6 @@
 # === PERSONAL DATA (NEVER ship) ===
 _IMPORT/
 _import/
-company/
-.company/
 company-data/
 .company-data/
 archive/
@@ -29,10 +27,30 @@ archive/
 # === COMPANY-SPECIFIC SKILLS ===
 .claude/skills/ask-company/
 .claude/skills/process-company-inbox/
-.claude/skills/convert-to-billion-docs/
-.claude/skills/*company*
-.claude/skills/*billion*
 .claude/skills/*-company-*
+
+# === L2-ONLY SKILLS (premium layer, not for public package) ===
+.claude/skills/council/
+.claude/skills/executor/
+.claude/skills/fase-2-5-tagging/
+.claude/skills/finance-agent/
+.claude/skills/gdrive-transcription-downloader/
+.claude/skills/hybrid-source-reading/
+.claude/skills/ler-planilha/
+.claude/skills/smart-download-tagger/
+.claude/skills/source-sync/
+.claude/skills/sync-docs/
+.claude/skills/talent-agent/
+.claude/skills/04-SKILL-KNOWLEDGE-EXTRACTION/
+.claude/skills/05-SKILL-PIPELINE-JARVIS/
+.claude/skills/07-SKILL-DISPATCHING-PARALLEL-AGENTS/
+.claude/skills/chronicler/
+.claude/skills/gemini-fallback/
+.claude/skills/jarvis/
+.claude/skills/jarvis-briefing/
+.claude/skills/resume/
+.claude/skills/save/
+.claude/skills/verify/
 
 # === PERSONAL EXPERT DATA ===
 agents/persons/**
@@ -49,7 +67,6 @@ agents/sua-empresa/**
 
 # === PERSONAL SCRIPTS (ALL of them) ===
 SCRIPTS/
-scripts/company/
 scripts/company/
 scripts/tmp-scripts/
 
@@ -70,7 +87,6 @@ system/database/import-buyers.mjs
 system/database/import-buyers.sh
 
 # === COMPANY-SPECIFIC PRDS ===
-reference/prds/prd-company-*.md
 reference/prds/prd-company-*.md
 
 # === LARGE NON-TEMPLATE DIRECTORIES ===

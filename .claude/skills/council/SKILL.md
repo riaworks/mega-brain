@@ -190,7 +190,7 @@ RISCOS RESIDUAIS:
 2. ...
 
 PROXIMOS PASSOS:
-1. MVP SaaS em 60 dias - Andre (CTO)
+1. MVP SaaS em 60 dias - CTO
 2. Validar com 50 clientes - [Head Comercial]
 ...
 ```

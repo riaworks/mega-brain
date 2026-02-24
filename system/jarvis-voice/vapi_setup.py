@@ -224,7 +224,7 @@ Ou use o widget no seu site:
 
    <script src="https://cdn.vapi.ai/widget.js"></script>
    <script>
-     window.vapiInstance = new Vapi('""" + api_key[:20] + """...');
+     window.vapiInstance = new Vapi('""" + api_key[:4] + """***');
      vapiInstance.start('""" + config['assistant_id'] + """');
    </script>
 

@@ -101,13 +101,13 @@ Toda analise deve incluir:
 ## ANALISE DE RUNWAY
 
 ### DADOS ATUAIS
-- Saldo projetado Jul/25: R$ X.XM ^[FINANCE:[SUA EMPRESA]-CONTEXT:projecao]
+- Saldo projetado: R$ X.XM ^[FINANCE:[SUA EMPRESA]-CONTEXT:projecao]
 - Custos fixos mensais: R$ XXXk ^[FINANCE:[SUA EMPRESA]-CONTEXT:custos]
 - Burn rate atual: R$ XXXk/mes
 
 ### CALCULO
 Runway = Saldo / Burn Rate
-Runway = R$ X.XM / R$ XXXk = 40 meses
+Runway = R$ X.XM / R$ XXXk = NN meses
 
 ### STATUS
 **Runway: 40 meses (ate Nov/2028)**

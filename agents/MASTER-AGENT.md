@@ -409,10 +409,10 @@ seu contexto específico. Por favor, responda:
 12. Meta de faturamento no mês 6?
 
 13. Meta de faturamento ano 1?
-    (Você mencionou META_ANUAL - confirma?)
+    (Confirme sua meta de faturamento anual)
 
 14. Meta de longo prazo?
-    (Você mencionou META_MENSAL - confirma?)
+    (Confirme sua meta de faturamento mensal)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

@@ -99,8 +99,6 @@ knowledge/TAG-RESOLVER.json
 # Company-specific data directories (per-user, never public)
 company-data/
 .company-data/
-company/
-.company/
 archive/
 _IMPORT/
 _import/
@@ -108,15 +106,12 @@ _import/
 # === EXTERNAL PACKAGES (not for distribution) ===
 vendor/
 
-# === COMPANY-SPECIFIC SKILLS (Per-user) ===
-.claude/skills/*company*
-.claude/skills/*billion*
-.claude/skills/*-company-*
+# === COMPANY-SPECIFIC SKILLS (excluded from npm via .npmignore) ===
+# Skills are tracked in git (Layer 2) but excluded from npm package (Layer 1)
 
 # === BUILD SCRIPTS (not for distribution) ===
 /SCRIPTS/
 scripts/tmp-scripts/
-scripts/company/
 scripts/company/
 
 # === OPERATIONAL LOGS & SYSTEM STATE (Per-user) ===
@@ -144,7 +139,6 @@ system/database/import-buyers.mjs
 system/database/import-buyers.sh
 
 # === COMPANY-SPECIFIC PRDS ===
-reference/prds/prd-company-*.md
 reference/prds/prd-company-*.md
 
 # === COMPANY-SPECIFIC DOCS (Layer 3 only) ===
@@ -185,7 +179,6 @@ processing/dna/
 
 # === KNOWLEDGE PERSONAL (Per-user) ===
 knowledge/_legacy/
-knowledge/company/
 knowledge/company/
 
 # === MEDIA FILES ===

@@ -71,7 +71,7 @@ sources:
 priority_mapping:
   P1_CRITICAL:
     statuses: ["atrasado", "bloqueado"]
-    notify: ["owner", "head_ops"]
+    notify: ["owner", "head-ops"]
     slack_channel: "#alerts-critical"
 
   P2_HIGH:
@@ -174,7 +174,7 @@ ACTIONS:
   "task_name": "Nome da Task",
   "old_status": "em progresso",
   "new_status": "atrasado",
-  "space_id": "${CLICKUP_LIST_ID}",
+  "space_id": "${CLICKUP_SPACE_ID}",
   "assignee": "user@[sua-empresa].com",
   "timestamp": "2026-01-11T14:30:00Z",
   "metadata": {

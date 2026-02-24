@@ -113,7 +113,7 @@ Os agentes especialistas **DEVEM**:
 - **NÃO PODE** fazer recomendações estratégicas sem consultar [SUA EMPRESA]-CONTEXT.md
 - **NÃO PODE** sugerir ações genéricas que não consideram a realidade da empresa
 - **NÃO PODE** ignorar métricas atuais ao propor mudanças
-- **NÃO PODE** recomendar contratações sem considerar custos fixos (~R$XXXk/mês)
+- **NÃO PODE** recomendar contratações sem considerar custos fixos atuais
 - **DEVE** sempre responder: "Como isso nos aproxima do [META FINANCEIRA]?"
 
 ```

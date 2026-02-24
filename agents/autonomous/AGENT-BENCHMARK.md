@@ -96,7 +96,7 @@ Métricas:
 
 ```
 Comparar com:
-├── Process Auditor (metodologia mencionada)
+├── Process methodology (referenced)
 ├── Scrum/Kanban
 ├── Shape Up (Basecamp)
 ├── OKRs (John Doerr)
