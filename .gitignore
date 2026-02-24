@@ -230,6 +230,9 @@ build/
 _audit.ps1
 npm-publish-error.log
 
+# === SECURITY (filter-repo patterns, never commit) ===
+scripts/filter-patterns.txt
+
 # === LARGE FILES ===
 **/SellTheAgency.com_Presentation.pdf
 *.docx

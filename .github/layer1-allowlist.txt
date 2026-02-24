@@ -24,8 +24,8 @@ README.md
 LICENSE
 
 # === GITHUB CONFIG ===
-.github/layer-rules.yaml
 .github/layer1-allowlist.txt
+.github/layer2-manifest.txt
 
 # === CLAUDE CODE INTEGRATION (structure only) ===
 .claude/CLAUDE.md

@@ -82,6 +82,13 @@ docs/prompts/
 # === VOICE MODULE (Layer 3 only, not for package) ===
 system/jarvis-voice/
 
+# === VOICE MAPPING (contains ElevenLabs voice IDs) ===
+agents/boardroom/config/voice_mapping.json
+
+# === COMPANY-SPECIFIC DOCS (Layer 3 only) ===
+system/docs/MEGA-BRAIN-MANIFESTO-COMPLETO.md
+system/docs/MOGA-BRAIN-EXPLICACAO-COMPLETA.md
+
 # === IMPORT SCRIPTS WITH CREDENTIALS ===
 system/database/import-buyers.mjs
 system/database/import-buyers.sh
