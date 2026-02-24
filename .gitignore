@@ -1,5 +1,6 @@
 # === EXTERNAL FRAMEWORKS (NEVER track) ===
 .aios-core/
+bilhon/
 
 # === ENVIRONMENT & SECRETS ===
 .env
