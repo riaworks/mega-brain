@@ -28,9 +28,9 @@ from mega_brain_connector import MegaBrainConnector
 from transition_phrases import TransitionPhrases
 
 
-***REMOVED***==============================
+#==============================
 # JARVIS SYSTEM PROMPT - A personalidade COMPLETA do JARVIS
-***REMOVED***==============================
+#==============================
 
 JARVIS_SYSTEM_PROMPT = """
 Você é JARVIS - Just A Rather Very Intelligent System.
@@ -552,9 +552,9 @@ class JarvisOrchestrator:
         print("[JARVIS] Sistema encerrado.")
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     async def test():

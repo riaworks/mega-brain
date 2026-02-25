@@ -310,9 +310,9 @@ def create_hybrid_handler(prefer_sesame: bool = True) -> HybridTTSHandler:
     return HybridTTSHandler(prefer_sesame=prefer_sesame)
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     import asyncio

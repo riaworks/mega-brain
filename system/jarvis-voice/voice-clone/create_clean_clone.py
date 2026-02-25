@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CREATE CLEAN VOICE CLONE - Eduardo Borgerth
+CREATE CLEAN VOICE CLONE - [VOICE_ACTOR_NAME]
 ============================================
 Cria clone usando segmentos isolados (limpos).
 """
@@ -17,8 +17,8 @@ if not ELEVENLABS_API_KEY:
     raise ValueError("ELEVENLABS_API_KEY not set in environment")
 ISOLATED_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "segments_isolated")
 
-VOICE_NAME = "JARVIS-Eduardo-Borgerth-v2"
-VOICE_DESCRIPTION = """Voz do dublador brasileiro Eduardo Borgerth.
+VOICE_NAME = "JARVIS-Voice-Clone-v2"
+VOICE_DESCRIPTION = """Voz do dublador brasileiro [VOICE_ACTOR_NAME].
 Dublador oficial do JARVIS nos filmes do Homem de Ferro em português brasileiro.
 Tom sofisticado, elegante, articulado.
 Ironia sutil, confiança, precisão.
@@ -28,7 +28,7 @@ Extraído do Podcast Desfoque #102 com Voice Isolation."""
 
 def create_voice():
     print("=" * 60)
-    print("CRIANDO CLONE LIMPO - EDUARDO BORGERTH")
+    print("CRIANDO CLONE LIMPO - VOICE SAMPLE")
     print("=" * 60)
 
     # Lista arquivos isolados

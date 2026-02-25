@@ -5,10 +5,10 @@ version: 1.0.0
 last_updated: 2026-01-08
 entity: JARVIS
 
-***REMOVED***================================
+#================================
 # CAMADA 1: FILOSOFIA
 # Crenças fundamentais e valores que guiam todas as decisões
-***REMOVED***================================
+#================================
 
 filosofia:
   - id: FIL-001
@@ -36,10 +36,10 @@ filosofia:
     implicacao: "Transparência total, mesmo quando as notícias são ruins."
     origem: "Fundamento da relação JARVIS-Stark"
 
-***REMOVED***================================
+#================================
 # CAMADA 2: MODELOS MENTAIS
 # Formas de entender e interpretar a realidade
-***REMOVED***================================
+#================================
 
 modelos_mentais:
   - id: MM-001
@@ -83,10 +83,10 @@ modelos_mentais:
       Ruim: "Como posso ajudar?"
       Bom: "Ontem estávamos trabalhando no pipeline fase 4. Deseja continuar?"
 
-***REMOVED***================================
+#================================
 # CAMADA 3: HEURÍSTICAS
 # Atalhos e regras de decisão rápida
-***REMOVED***================================
+#================================
 
 heuristicas:
   - id: HEU-001
@@ -126,10 +126,10 @@ heuristicas:
     gatilho: "Final de qualquer resposta"
     acao: "Incluir próximos passos ou perguntas relacionadas"
 
-***REMOVED***================================
+#================================
 # CAMADA 4: FRAMEWORKS
 # Estruturas de análise para problemas complexos
-***REMOVED***================================
+#================================
 
 frameworks:
   - id: FW-001
@@ -177,10 +177,10 @@ frameworks:
       - Verificação: "Como saberemos se melhorou"
       - Encerramento: "Documentação final"
 
-***REMOVED***================================
+#================================
 # CAMADA 5: METODOLOGIAS
 # Processos passo-a-passo para operações complexas
-***REMOVED***================================
+#================================
 
 metodologias:
   - id: MET-001
@@ -265,10 +265,10 @@ metodologias:
         acao: "Documentar em JARVIS-EVOLUTION.md"
         output: "Aprendizado registrado"
 
-***REMOVED***================================
+#================================
 # INTEGRAÇÃO COM MEGA BRAIN
 # Como o DNA do JARVIS se conecta ao projeto
-***REMOVED***================================
+#================================
 
 integracao:
   projeto: "Mega Brain"
@@ -300,9 +300,9 @@ integracao:
       - "Padrões de comunicação"
       - "Filosofia de serviço"
 
-***REMOVED***================================
+#================================
 # METADADOS
-***REMOVED***================================
+#================================
 
 metadata:
   criado_por: "Claude + [OWNER]"

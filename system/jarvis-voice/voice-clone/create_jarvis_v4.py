@@ -27,7 +27,7 @@ ISOLATED_DIR = f"{BASE_DIR}/jarvis_v4_isolated"
 
 VOICE_NAME = "JARVIS-Film-v4"
 VOICE_DESCRIPTION = """Voz do JARVIS dos filmes Homem de Ferro (dublagem brasileira).
-Eduardo Borgerth - dublador oficial do JARVIS em PT-BR.
+[VOICE_ACTOR_NAME] - dublador oficial do JARVIS em PT-BR.
 Tom processado/robótico original dos filmes Marvel.
 Características: clareza digital, precisão, elegância artificial.
 Extraído de múltiplas cenas dos filmes com isolamento de voz."""

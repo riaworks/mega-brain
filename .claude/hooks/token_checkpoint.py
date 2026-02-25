@@ -31,9 +31,9 @@ from enum import Enum
 import threading
 
 
-***REMOVED***=================================
+#=================================
 # CONFIGURATION
-***REMOVED***=================================
+#=================================
 
 class Config:
     """Configuração do sistema de checkpoint."""
@@ -71,9 +71,9 @@ class CheckpointLevel(Enum):
     CRITICAL = "critical"
 
 
-***REMOVED***=================================
+#=================================
 # DATA STRUCTURES
-***REMOVED***=================================
+#=================================
 
 @dataclass
 class TokenEstimate:
@@ -125,9 +125,9 @@ class TokenCheckpointState:
     checkpoints: List[str] = field(default_factory=list)  # IDs dos checkpoints
 
 
-***REMOVED***=================================
+#=================================
 # TOKEN CHECKPOINT MANAGER
-***REMOVED***=================================
+#=================================
 
 class TokenCheckpointManager:
     """Gerenciador singleton de checkpoints de token."""
@@ -440,9 +440,9 @@ class TokenCheckpointManager:
         self._save_state()
 
 
-***REMOVED***=================================
+#=================================
 # GLOBAL API
-***REMOVED***=================================
+#=================================
 
 _manager: Optional[TokenCheckpointManager] = None
 
@@ -491,9 +491,9 @@ def reset_session():
     get_manager().reset_session()
 
 
-***REMOVED***=================================
+#=================================
 # HOOK INTEGRATION
-***REMOVED***=================================
+#=================================
 
 def process_hook_input(hook_input: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -525,9 +525,9 @@ def process_hook_input(hook_input: Dict[str, Any]) -> Dict[str, Any]:
     return result
 
 
-***REMOVED***=================================
+#=================================
 # CLI
-***REMOVED***=================================
+#=================================
 
 def main():
     """CLI para teste e debug."""

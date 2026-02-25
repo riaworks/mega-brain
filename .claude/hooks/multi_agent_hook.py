@@ -46,9 +46,9 @@ except ImportError:
     JarvisOrchestrator = None
 
 
-***REMOVED***================================
+#================================
 # CONFIGURAÇÃO
-***REMOVED***================================
+#================================
 
 SYSTEM_PATH = PROJECT_ROOT / "system"
 LOGS_PATH = PROJECT_ROOT / "logs"
@@ -75,9 +75,9 @@ DEFAULT_CONFIG = {
 }
 
 
-***REMOVED***================================
+#================================
 # HOOK PRINCIPAL
-***REMOVED***================================
+#================================
 
 def load_config() -> Dict:
     """Carrega configuração do hook."""
@@ -369,9 +369,9 @@ def process_user_prompt(prompt: str) -> Tuple[str, Dict[str, Any]]:
     return "", {"decision": decision, "analysis": analysis}
 
 
-***REMOVED***================================
+#================================
 # INTERFACE PARA HOOK DO CLAUDE CODE
-***REMOVED***================================
+#================================
 
 def hook_handler(event: Dict) -> Dict:
     """
@@ -396,9 +396,9 @@ def hook_handler(event: Dict) -> Dict:
     }
 
 
-***REMOVED***================================
+#================================
 # CLI PARA TESTES
-***REMOVED***================================
+#================================
 
 def main():
     """CLI para testar o hook."""

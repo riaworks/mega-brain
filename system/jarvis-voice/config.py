@@ -16,17 +16,17 @@ load_dotenv()
 class Config:
     """Configurações do sistema JARVIS Voice."""
 
-    ***REMOVED***==============================
+    #==============================
     # API KEYS
-    ***REMOVED***==============================
+    #==============================
 
     DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY")
     ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
     ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
-    ***REMOVED***==============================
+    #==============================
     # ELEVENLABS (Text-to-Speech)
-    ***REMOVED***==============================
+    #==============================
 
     # Voice ID: João Gabriel (PT-BR masculino, estilo JARVIS)
     ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID", "your-voice-id-here")
@@ -39,9 +39,9 @@ class Config:
     VOICE_STYLE = 0.20            # Baixo = neutro, profissional, JARVIS-like
     VOICE_SPEAKER_BOOST = True    # Clareza do áudio
 
-    ***REMOVED***==============================
+    #==============================
     # DEEPGRAM (Speech-to-Text) - OTIMIZADO PARA PT-BR
-    ***REMOVED***==============================
+    #==============================
 
     DEEPGRAM_MODEL = "nova-2"     # Melhor modelo para português
     DEEPGRAM_LANGUAGE = "pt-BR"   # Português brasileiro
@@ -72,16 +72,16 @@ class Config:
         "Jeremy Haynes:1.5",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # CLAUDE (LLM)
-    ***REMOVED***==============================
+    #==============================
 
     CLAUDE_MODEL = "claude-sonnet-4-20250514"
     CLAUDE_MAX_TOKENS = 2048
 
-    ***REMOVED***==============================
+    #==============================
     # TIMING (segundos)
-    ***REMOVED***==============================
+    #==============================
 
     # Tempo antes do primeiro "hmm" após receber input
     ACKNOWLEDGMENT_DELAY = 0.4
@@ -92,9 +92,9 @@ class Config:
     # Quando adicionar frase de processamento longo
     LONG_PROCESSING_TIME = 10
 
-    ***REMOVED***==============================
+    #==============================
     # MEGA BRAIN PATHS
-    ***REMOVED***==============================
+    #==============================
 
     # Caminho base do projeto Mega Brain
     MEGA_BRAIN_PATH = os.getenv(
@@ -112,17 +112,17 @@ class Config:
     # Caminho dos agentes
     AGENTS_PATH = f"{MEGA_BRAIN_PATH}/agents"
 
-    ***REMOVED***==============================
+    #==============================
     # AUDIO SETTINGS
-    ***REMOVED***==============================
+    #==============================
 
     SAMPLE_RATE = 48000           # Taxa nativa do MacBook Pro
     CHANNELS = 1                  # Mono
     CHUNK_SIZE = 4000             # ~250ms de áudio por chunk
 
-    ***REMOVED***==============================
+    #==============================
     # VALIDAÇÃO
-    ***REMOVED***==============================
+    #==============================
 
     @classmethod
     def validate(cls) -> tuple[bool, list[str]]:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ELEVENLABS VOICE CLONE - Eduardo Borgerth (JARVIS BR)
+ELEVENLABS VOICE CLONE - [VOICE_ACTOR_NAME] (JARVIS BR)
 ======================================================
 Cria clone de voz usando a API do ElevenLabs.
 
@@ -18,8 +18,8 @@ load_dotenv()
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 if not ELEVENLABS_API_KEY:
     raise ValueError("ELEVENLABS_API_KEY not set in environment")
-VOICE_NAME = "JARVIS-Eduardo-Borgerth"
-VOICE_DESCRIPTION = """Voz do dublador brasileiro Eduardo Borgerth como JARVIS.
+VOICE_NAME = "JARVIS-Voice-Clone"
+VOICE_DESCRIPTION = """Voz do dublador brasileiro [VOICE_ACTOR_NAME] como JARVIS.
 Tom sofisticado, elegante, articulado.
 Ironia sutil, confiança, precisão.
 Português brasileiro com dicção impecável.

@@ -66,32 +66,32 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
 
-***REMOVED***=================================
+#=================================
 # CONFIGURAÇÃO
-***REMOVED***=================================
+#=================================
 
 PROJECT_ROOT = Path(__file__).parent.parent
 CONFIG_PATH = PROJECT_ROOT / "system" / "config.json"
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES AUXILIARES
-***REMOVED***=================================
+#=================================
 
 def funcao_auxiliar():
     """Descrição da função."""
     pass
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES PRINCIPAIS
-***REMOVED***=================================
+#=================================
 
 def funcao_principal():
     """Descrição da função principal."""
     pass
 
-***REMOVED***=================================
+#=================================
 # MAIN
-***REMOVED***=================================
+#=================================
 
 def main():
     """Entry point do script."""

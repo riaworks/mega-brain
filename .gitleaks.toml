@@ -1,10 +1,10 @@
-***REMOVED***=================================
+#=================================
 # Mega Brain — Gitleaks Configuration
-***REMOVED***=================================
+#=================================
 # Custom secret detection patterns for the Mega Brain ecosystem.
 # Used by: pre-commit hook (if gitleaks installed), CI/CD pipeline.
 # Installed: 2026-02-21 (post-incident hardening)
-***REMOVED***=================================
+#=================================
 
 title = "Mega Brain Secret Detection"
 

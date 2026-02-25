@@ -27,9 +27,9 @@ if sys.platform == 'win32':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
-***REMOVED***=================================
+#=================================
 # CONFIGURAÇÃO
-***REMOVED***=================================
+#=================================
 
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 MISSION_CONTROL = PROJECT_ROOT / ".claude" / "mission-control"
@@ -41,9 +41,9 @@ DELTA_PENDING_FILE = MISSION_CONTROL / "DELTA-PENDING.json"
 # Configuração de alertas
 STALE_THRESHOLD_DAYS = 7  # Dias sem sync para considerar "stale"
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES AUXILIARES
-***REMOVED***=================================
+#=================================
 
 def load_json(path: Path) -> dict:
     """Carrega arquivo JSON com tratamento de erro."""
@@ -83,9 +83,9 @@ def count_untagged_inbox_files() -> int:
 
     return untagged
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES DE VERIFICAÇÃO
-***REMOVED***=================================
+#=================================
 
 def check_pending_delta() -> Tuple[bool, int, str]:
     """
@@ -123,9 +123,9 @@ def check_untagged_files() -> Tuple[bool, int]:
     count = count_untagged_inbox_files()
     return count > 0, count
 
-***REMOVED***=================================
+#=================================
 # GERAÇÃO DE ALERTAS
-***REMOVED***=================================
+#=================================
 
 def generate_alerts() -> List[dict]:
     """Gera lista de alertas baseado nas verificações."""
@@ -198,9 +198,9 @@ def get_alerts_json() -> str:
         "count": len(alerts)
     }, ensure_ascii=False, indent=2)
 
-***REMOVED***=================================
+#=================================
 # MAIN
-***REMOVED***=================================
+#=================================
 
 def main():
     """Executa verificação e exibe alertas."""

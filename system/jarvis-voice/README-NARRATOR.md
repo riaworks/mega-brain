@@ -1,6 +1,6 @@
 # JARVIS Narrator - Sistema de Audiobook
 
-Sistema completo para transformar qualquer texto em narração com a voz e personalidade do JARVIS (Eduardo Borgerth - dublador oficial PT-BR).
+Sistema completo para transformar qualquer texto em narração com a voz e personalidade do JARVIS ([VOICE_ACTOR_NAME] - dublador oficial PT-BR).
 
 ## Uso Rápido
 
@@ -37,7 +37,7 @@ python3 jarvis_narrator.py --chunks livro_completo.txt
 │     └─→ Mantém todos os fatos e números                    │
 │                                                             │
 │  3. GERAÇÃO DE ÁUDIO (ElevenLabs)                          │
-│     └─→ Voz clonada do Eduardo Borgerth                    │
+│     └─→ Voz clonada do [VOICE_ACTOR_NAME]                    │
 │     └─→ Modelo multilingual v2 (PT-BR otimizado)           │
 │     └─→ Divisão automática para textos longos              │
 │                                                             │
@@ -81,7 +81,7 @@ pip3 install elevenlabs anthropic pydub python-dotenv requests
 
 - **Nome:** JARVIS-Brasil-v5
 - **Voice ID:** (configurado via ELEVENLABS_NARRATOR_VOICE_ID em .env)
-- **Dublador:** Eduardo Borgerth (voz oficial do JARVIS em PT-BR)
+- **Dublador:** [VOICE_ACTOR_NAME] (voz oficial do JARVIS em PT-BR)
 - **Tipo:** Professional Voice Clone
 
 ## Limites

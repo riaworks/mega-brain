@@ -365,9 +365,9 @@ class TTSHandlerSimple:
             return False
 
 
-***REMOVED***==============================
+#==============================
 # FACTORY
-***REMOVED***==============================
+#==============================
 
 def create_tts_handler() -> TTSHandler:
     """
@@ -383,9 +383,9 @@ def create_tts_handler() -> TTSHandler:
         return TTSHandlerSimple()
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     import asyncio

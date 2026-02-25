@@ -350,9 +350,9 @@ class STTHandlerSimple:
         return ""
 
 
-***REMOVED***==============================
+#==============================
 # FACTORY
-***REMOVED***==============================
+#==============================
 
 def create_stt_handler(callback: Callable[[str], Awaitable[None]]) -> STTHandler:
     """
@@ -366,9 +366,9 @@ def create_stt_handler(callback: Callable[[str], Awaitable[None]]) -> STTHandler
         return STTHandlerSimple(callback)
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     import asyncio

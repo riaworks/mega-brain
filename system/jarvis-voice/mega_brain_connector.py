@@ -114,9 +114,9 @@ class MegaBrainConnector:
         """Recarrega estado do arquivo."""
         self.state = self._load_state()
 
-    ***REMOVED***==============================
+    #==============================
     # CONTEXT FOR CLAUDE
-    ***REMOVED***==============================
+    #==============================
 
     def get_context_for_claude(self) -> str:
         """
@@ -169,9 +169,9 @@ VOICE SYSTEM:
             return "- Nenhuma pendência"
         return "\n".join([f"- {p}" for p in pending])
 
-    ***REMOVED***==============================
+    #==============================
     # ACTION LOGGING
-    ***REMOVED***==============================
+    #==============================
 
     def add_action(self, action: str):
         """Registra uma ação no histórico."""
@@ -220,9 +220,9 @@ VOICE SYSTEM:
         except Exception as e:
             print(f"[ERROR] Falha ao registrar decisão: {e}")
 
-    ***REMOVED***==============================
+    #==============================
     # AGENT CONTEXT
-    ***REMOVED***==============================
+    #==============================
 
     def get_agent_context(self, agent_name: str) -> Optional[str]:
         """
@@ -283,9 +283,9 @@ VOICE SYSTEM:
 
         return sorted(set(agents))
 
-    ***REMOVED***==============================
+    #==============================
     # PIPELINE STATUS
-    ***REMOVED***==============================
+    #==============================
 
     def update_pipeline_status(self, **kwargs):
         """Atualiza status do pipeline."""
@@ -324,9 +324,9 @@ VOICE SYSTEM:
             f"{pipeline.get('insights_extracted', 0)} insights."
         )
 
-    ***REMOVED***==============================
+    #==============================
     # SESSION MANAGEMENT
-    ***REMOVED***==============================
+    #==============================
 
     def start_voice_session(self):
         """Marca início de uma sessão de voz."""
@@ -348,9 +348,9 @@ VOICE SYSTEM:
 
         self.save_state()
 
-    ***REMOVED***==============================
+    #==============================
     # PENDING ITEMS
-    ***REMOVED***==============================
+    #==============================
 
     def add_pending_question(self, question: str):
         """Adiciona uma pergunta pendente."""
@@ -370,9 +370,9 @@ VOICE SYSTEM:
         return self.state.get("context", {}).get("pending_questions", [])
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     print("=" * 60)

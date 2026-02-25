@@ -3,7 +3,7 @@
 VAPI UPDATE FULL PT-BR - JARVIS BRASILEIRO COMPLETO
 ====================================================
 Atualiza o assistente JARVIS no Vapi com:
-- Voz brasileira (Voice ID v5 BR - Eduardo Borgerth)
+- Voz brasileira (Voice ID v5 BR - [VOICE_ACTOR_NAME])
 - Deepgram configurado para PT-BR
 - System prompt otimizado para voz em português
 - Keywords brasileiras no Deepgram
@@ -19,9 +19,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-***REMOVED***=================================
+#=================================
 # CONFIGURACAO
-***REMOVED***=================================
+#=================================
 
 VAPI_API_KEY = os.getenv("VAPI_API_KEY")
 if not VAPI_API_KEY:
@@ -30,14 +30,14 @@ ASSISTANT_ID = os.getenv("VAPI_ASSISTANT_ID")
 if not ASSISTANT_ID:
     raise ValueError("VAPI_ASSISTANT_ID not set in environment")
 
-# Voice ID v5 BR - Clone da dublagem brasileira (Eduardo Borgerth)
+# Voice ID v5 BR - Clone da dublagem brasileira ([VOICE_ACTOR_NAME])
 VOICE_ID_V5_BR = os.getenv("VAPI_VOICE_ID_V5_BR")
 if not VOICE_ID_V5_BR:
     raise ValueError("VAPI_VOICE_ID_V5_BR not set in environment")
 
-***REMOVED***=================================
+#=================================
 # SYSTEM PROMPT - PORTUGUES BRASILEIRO NATIVO
-***REMOVED***=================================
+#=================================
 
 SYSTEM_PROMPT_PTBR = """Voce e JARVIS - Just A Rather Very Intelligent System.
 Assistente de inteligencia artificial pessoal do senhor.
@@ -87,9 +87,9 @@ EXEMPLOS DE RESPOSTAS RUINS:
 - Respostas com mais de cinquenta palavras
 - Usar numeros em formato digital como 2800 ou 61%"""
 
-***REMOVED***=================================
+#=================================
 # TOOLS DO MEGA BRAIN
-***REMOVED***=================================
+#=================================
 
 TOOLS_CONFIG = [
     {
@@ -164,9 +164,9 @@ TOOLS_CONFIG = [
     }
 ]
 
-***REMOVED***=================================
+#=================================
 # CONFIGURACAO COMPLETA DO ASSISTENTE
-***REMOVED***=================================
+#=================================
 
 FULL_PTBR_CONFIG = {
     # Nome
@@ -191,7 +191,7 @@ FULL_PTBR_CONFIG = {
         "tools": TOOLS_CONFIG
     },
 
-    # Voz ElevenLabs - Clone v5 BR (Eduardo Borgerth)
+    # Voz ElevenLabs - Clone v5 BR ([VOICE_ACTOR_NAME])
     "voice": {
         "provider": "11labs",
         "voiceId": VOICE_ID_V5_BR,
@@ -289,9 +289,9 @@ FULL_PTBR_CONFIG = {
 }
 
 
-***REMOVED***=================================
+#=================================
 # FUNCOES DE ATUALIZACAO
-***REMOVED***=================================
+#=================================
 
 def update_assistant_full():
     """Atualiza o assistente com todas as configuracoes PT-BR."""
@@ -424,9 +424,9 @@ def verify_configuration():
         return None
 
 
-***REMOVED***=================================
+#=================================
 # MAIN
-***REMOVED***=================================
+#=================================
 
 if __name__ == "__main__":
     import sys

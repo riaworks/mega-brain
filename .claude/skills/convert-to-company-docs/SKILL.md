@@ -1,10 +1,10 @@
-# CONVERT TO BILLION DOCS
+# CONVERT TO COMPANY DOCS
 
 ## Trigger
-`/convert-to-billion-docs` ou `/billion-docs`
+`/convert-to-company-docs` ou `/company-docs`
 
 ## Objetivo
-Converter arquivos Markdown para Google Docs com formatacao visual Billion.
+Converter arquivos Markdown para Google Docs com formatacao visual Company.
 
 ## Estilos Aplicados
 
@@ -15,7 +15,7 @@ Converter arquivos Markdown para Google Docs com formatacao visual Billion.
 - **Secao (H3+)**: 12pt Bold, #434343
 - **Corpo**: 10pt Normal
 
-### Cores Billion
+### Cores Company
 | Elemento | Cor |
 |----------|-----|
 | Background | #F3F3F3 |
@@ -56,7 +56,7 @@ python convert.py ./TEMPLATE.md [YOUR_FOLDER_ID_HERE]
 ## Output
 
 ```
-=== DOCUMENTO BILLION CRIADO ===
+=== DOCUMENTO COMPANY CRIADO ===
 Titulo: [Nome do documento]
 URL: https://docs.google.com/document/d/[ID]/edit
 Timestamp: 2026-01-20T...
@@ -64,5 +64,5 @@ Timestamp: 2026-01-20T...
 
 ## Arquivos Relacionados
 
-- [BILLION-VISUAL-STANDARDS.md](../../../[SUA EMPRESA]-CORE/templates/BILLION-VISUAL-STANDARDS.md)
+- [COMPANY-VISUAL-STANDARDS.md](../../../[SUA EMPRESA]-CORE/templates/COMPANY-VISUAL-STANDARDS.md)
 - [config.json](../sync-docs/config.json)

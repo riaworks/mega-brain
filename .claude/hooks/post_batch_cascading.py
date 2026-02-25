@@ -37,9 +37,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 
-***REMOVED***=================================
+#=================================
 # CONFIGURATION
-***REMOVED***=================================
+#=================================
 
 PROJECT_DIR = os.environ.get(
     'CLAUDE_PROJECT_DIR',
@@ -53,9 +53,9 @@ LOGS_DIR = Path(PROJECT_DIR) / 'logs'
 CASCADING_LOG = LOGS_DIR / 'cascading.jsonl'
 
 
-***REMOVED***=================================
+#=================================
 # LOGGING
-***REMOVED***=================================
+#=================================
 
 def log_cascading_action(action: Dict) -> None:
     """
@@ -83,9 +83,9 @@ def log_batch_result(batch_id: str, result: Dict) -> None:
     })
 
 
-***REMOVED***=================================
+#=================================
 # DESTINATION EXTRACTION
-***REMOVED***=================================
+#=================================
 
 def extract_destinations(batch_content: str) -> Dict[str, List[Dict]]:
     """
@@ -311,9 +311,9 @@ def extract_batch_metadata(batch_content: str) -> Dict:
     if elements_match:
         metadata['elements_count'] = int(elements_match.group(1))
 
-    ***REMOVED***=============================
+    #=============================
     # EXTRAIR FRAMEWORKS COM CONTEUDO REAL
-    ***REMOVED***=============================
+    #=============================
     fw_section_match = re.search(
         r'(?:##\s*)?(?:🏗️\s*)?KEY\s*FRAMEWORKS?.*?\n(.*?)(?=\n---|\n##|\Z)',
         batch_content, re.DOTALL | re.IGNORECASE
@@ -329,9 +329,9 @@ def extract_batch_metadata(batch_content: str) -> Dict:
             metadata['frameworks'].append(name)
             metadata['frameworks_content'][name] = content
 
-    ***REMOVED***=============================
+    #=============================
     # EXTRAIR HEURISTICAS COM CONTEUDO REAL
-    ***REMOVED***=============================
+    #=============================
     # Buscar secao que comeca com ## HEURISTICAS ou similar
     heur_section_match = re.search(
         r'(?:##\s*)?(?:🔢\s*)?HEUR[IÍ]STICAS?\s*(?:COM\s*N[UÚ]MEROS?)?\s*(?:\(\d+\))?\s*\n(```\n)?(.*?)(?=\n```\n|\n---|\n##[^#]|\Z)',
@@ -346,9 +346,9 @@ def extract_batch_metadata(batch_content: str) -> Dict:
             heuristics = re.findall(r'[├└│]\s*([^\n]+\d+[^\n]*)', heur_section)
             metadata['heuristics'] = [h.strip() for h in heuristics[:10]]
 
-    ***REMOVED***=============================
+    #=============================
     # EXTRAIR METODOLOGIAS COM CONTEUDO REAL
-    ***REMOVED***=============================
+    #=============================
     # Buscar secao que comeca com ## METODOLOGIAS ou similar
     meth_section_match = re.search(
         r'(?:##\s*)?(?:📝\s*)?METODOLOGIAS?\s*(?:\(\d+\))?\s*\n(```\n)?(.*?)(?=\n```\s*\n---|\n---|\n##[^#]|\Z)',
@@ -368,9 +368,9 @@ def extract_batch_metadata(batch_content: str) -> Dict:
                     for m in meth_names
                 ]
 
-    ***REMOVED***=============================
+    #=============================
     # EXTRAIR FILOSOFIAS COM CONTEUDO REAL
-    ***REMOVED***=============================
+    #=============================
     fil_section_match = re.search(
         r'(?:##\s*)?(?:🧠\s*)?FILOSOFIAS?.*?\n(.*?)(?=\n---|\n##|\Z)',
         batch_content, re.DOTALL | re.IGNORECASE
@@ -378,9 +378,9 @@ def extract_batch_metadata(batch_content: str) -> Dict:
     if fil_section_match:
         metadata['filosofias_content'] = fil_section_match.group(1).strip()
 
-    ***REMOVED***=============================
+    #=============================
     # EXTRAIR MODELOS MENTAIS COM CONTEUDO REAL
-    ***REMOVED***=============================
+    #=============================
     mm_section_match = re.search(
         r'(?:##\s*)?(?:🔄\s*)?MODELOS?\s*MENTAIS?.*?\n(.*?)(?=\n---|\n##|\Z)',
         batch_content, re.DOTALL | re.IGNORECASE
@@ -532,9 +532,9 @@ def extract_framework_content(batch_content: str, framework_name: str) -> Option
     return None
 
 
-***REMOVED***=================================
+#=================================
 # CASCADING FUNCTIONS
-***REMOVED***=================================
+#=================================
 
 def cascade_to_agents(agents: List[Dict], batch_id: str, metadata: Dict,
                       batch_content: str = None) -> List[Dict]:
@@ -1433,9 +1433,9 @@ Este dossier consolida conhecimento sobre **{theme_name.replace('-', ' ').title(
         return False
 
 
-***REMOVED***=================================
+#=================================
 # BATCH UPDATE
-***REMOVED***=================================
+#=================================
 
 def mark_cascading_complete(batch_path: str, cascaded_items: Dict) -> bool:
     """
@@ -1506,9 +1506,9 @@ def mark_cascading_complete(batch_path: str, cascaded_items: Dict) -> bool:
         return False
 
 
-***REMOVED***=================================
+#=================================
 # MAIN ENTRY POINT
-***REMOVED***=================================
+#=================================
 
 def process_batch(batch_path: str) -> Dict:
     """
@@ -1588,10 +1588,10 @@ def process_batch(batch_path: str) -> Dict:
                 batch_content  # NOVO v2.0
             )
 
-        ***REMOVED***=========================
+        #=========================
         # REGRA #26: VALIDAÇÃO DE INTEGRIDADE DO CASCATEAMENTO
         # Só marca como completo se validação passar
-        ***REMOVED***=========================
+        #=========================
         try:
             import sys
             scripts_path = str(Path(PROJECT_DIR) / 'scripts')

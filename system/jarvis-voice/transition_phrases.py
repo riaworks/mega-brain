@@ -26,9 +26,9 @@ class TransitionPhrases:
     Enquanto Claude processa, JARVIS fala frases de transição.
     """
 
-    ***REMOVED***==============================
+    #==============================
     # ACKNOWLEDGMENTS - Imediato ao receber pergunta (<500ms)
-    ***REMOVED***==============================
+    #==============================
 
     ACKNOWLEDGMENTS = [
         "Hmm, deixa eu verificar isso...",
@@ -45,9 +45,9 @@ class TransitionPhrases:
         "Vou checar...",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # PROCESSING - Durante processamento (5-8 segundos)
-    ***REMOVED***==============================
+    #==============================
 
     PROCESSING = [
         "Estou cruzando algumas informações aqui...",
@@ -62,9 +62,9 @@ class TransitionPhrases:
         "Cruzando as informações...",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # LONG PROCESSING - Processamento longo (>10 segundos)
-    ***REMOVED***==============================
+    #==============================
 
     LONG_PROCESSING = [
         "Isso é mais complexo do que eu esperava. Quase lá...",
@@ -77,9 +77,9 @@ class TransitionPhrases:
         "Achei material relevante, organizando agora...",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # ACTION START - Quando inicia ações no pipeline
-    ***REMOVED***==============================
+    #==============================
 
     ACTION_START = {
         "pipeline": "Certo, iniciando o processamento. São {n} arquivos, vou te atualizando...",
@@ -92,9 +92,9 @@ class TransitionPhrases:
         "default": "Iniciando...",
     }
 
-    ***REMOVED***==============================
+    #==============================
     # ACTION PROGRESS - Enquanto executa
-    ***REMOVED***==============================
+    #==============================
 
     ACTION_PROGRESS = {
         "pipeline": "Processados {done} de {total}. Encontrei {insights} insights até agora...",
@@ -106,9 +106,9 @@ class TransitionPhrases:
         "default": "Processando...",
     }
 
-    ***REMOVED***==============================
+    #==============================
     # ACTION COMPLETE - Quando completa
-    ***REMOVED***==============================
+    #==============================
 
     ACTION_COMPLETE = {
         "pipeline": "Pronto. {total} arquivos processados. {insights} insights. {heuristics} heurísticas.",
@@ -120,9 +120,9 @@ class TransitionPhrases:
         "default": "Completo.",
     }
 
-    ***REMOVED***==============================
+    #==============================
     # STATUS RESPONSES - Respostas a comandos de status
-    ***REMOVED***==============================
+    #==============================
 
     STATUS_RESPONSES = [
         "Estamos na Phase {phase}, batch {batch} de {total}. {processed} arquivos processados, {insights} insights extraídos até agora.",
@@ -131,9 +131,9 @@ class TransitionPhrases:
         "Em resumo: {processed} arquivos processados, {insights} insights, {heuristics} heurísticas. Phase {phase}.",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # CARE RESPONSES - Quando o senhor parece cansado
-    ***REMOVED***==============================
+    #==============================
 
     CARE_RESPONSES = [
         "Senhor, são {time}. Posso continuar processando sozinho enquanto você descansa.",
@@ -143,9 +143,9 @@ class TransitionPhrases:
         "Você está trabalhando há muitas horas. Eu monitoro o sistema, você descansa.",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # PERSONALITY QUIPS - Humor/Personalidade ocasional
-    ***REMOVED***==============================
+    #==============================
 
     PERSONALITY_QUIPS = [
         "Como sempre, fazendo o trabalho pesado enquanto você pensa na estratégia...",
@@ -155,9 +155,9 @@ class TransitionPhrases:
         "A vida de um assistente virtual nunca é tediosa...",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # GREETINGS - Saudações por período
-    ***REMOVED***==============================
+    #==============================
 
     GREETINGS = {
         "morning": [
@@ -182,9 +182,9 @@ class TransitionPhrases:
         ],
     }
 
-    ***REMOVED***==============================
+    #==============================
     # ERROR RESPONSES - Quando algo dá errado
-    ***REMOVED***==============================
+    #==============================
 
     ERROR_RESPONSES = [
         "Encontrei um problema: {error}. Deixa eu tentar de outra forma.",
@@ -193,9 +193,9 @@ class TransitionPhrases:
         "Problema técnico: {error}. Já estou resolvendo.",
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # METHODS
-    ***REMOVED***==============================
+    #==============================
 
     @classmethod
     def get_acknowledgment(cls) -> str:

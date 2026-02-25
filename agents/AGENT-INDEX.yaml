@@ -3,9 +3,9 @@
 # Updated: 2026-02-18
 # Source: Filesystem inventory of agents/
 
-***REMOVED***=================================
+#=================================
 # PERSON AGENTS (5) - Mind clones de experts
-***REMOVED***=================================
+#=================================
 persons:
   - slug: alex-hormozi
     name: Alex Hormozi
@@ -42,9 +42,9 @@ persons:
     memory: .claude/agent-memory/the-scalable-company/MEMORY.md
     status: active
 
-***REMOVED***=================================
+#=================================
 # CARGO AGENTS (5 groups) - Posicoes funcionais
-***REMOVED***=================================
+#=================================
 cargo:
   - group: c-level
     path: agents/cargo/c-level/
@@ -72,9 +72,9 @@ cargo:
 
   shared_rules: agents/cargo/SHARED-RULES.md
 
-***REMOVED***=================================
+#=================================
 # COUNCIL AGENTS (3) - Decisao coletiva
-***REMOVED***=================================
+#=================================
 council:
   - slug: advogado-do-diabo
     name: Advogado do Diabo
@@ -92,9 +92,9 @@ council:
     memory: .claude/agent-memory/synthesizer/MEMORY.md
     status: active
 
-***REMOVED***=================================
+#=================================
 # SYSTEM AGENTS (4 autonomous + 4 sub-agents)
-***REMOVED***=================================
+#=================================
 autonomous:
   - slug: benchmark
     path: agents/autonomous/AGENT-BENCHMARK.md
@@ -133,9 +133,9 @@ sub_agents:
     path: agents/sub-agents/AGENT-STATUS-TRIGGER.md
     status: active
 
-***REMOVED***=================================
+#=================================
 # INFRASTRUCTURE
-***REMOVED***=================================
+#=================================
 infrastructure:
   boardroom:
     path: agents/boardroom/
@@ -161,9 +161,9 @@ infrastructure:
     purpose: New expert tracking
     status: active
 
-***REMOVED***=================================
+#=================================
 # TOTALS
-***REMOVED***=================================
+#=================================
 totals:
   persons: 5
   cargo_groups: 5

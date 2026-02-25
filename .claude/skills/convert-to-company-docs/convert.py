@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-CONVERT TO BILLION DOCS - Converte Markdown para Google Docs com estilos Billion
+CONVERT TO COMPANY DOCS - Converte Markdown para Google Docs com estilos Company
 
 Aplica:
 - Fonte Montserrat (fallback Arial)
-- Paleta de cores Billion (#D9D9D9, #F3F3F3, #A0A0A0)
+- Paleta de cores Company (#D9D9D9, #F3F3F3, #A0A0A0)
 - Formatacao de tabelas com headers cinza
 - Headers de secao numerados
 """
@@ -26,7 +26,7 @@ except ImportError:
     sys.exit(1)
 
 
-# Cores Billion (RGB normalizado 0-1)
+# Cores Company (RGB normalizado 0-1)
 COLORS = {
     'background': {'red': 0.953, 'green': 0.953, 'blue': 0.953},      # #F3F3F3
     'table_header': {'red': 0.851, 'green': 0.851, 'blue': 0.851},    # #D9D9D9
@@ -174,8 +174,8 @@ class MarkdownParser:
         return items, i
 
 
-class BillionDocsConverter:
-    """Converte Markdown para Google Docs com estilos Billion."""
+class CompanyDocsConverter:
+    """Converte Markdown para Google Docs com estilos Company."""
 
     SCOPES = [
         'https://www.googleapis.com/auth/documents',
@@ -298,7 +298,7 @@ class BillionDocsConverter:
 
     def convert(self, md_path: str, folder_id: str = None) -> dict:
         """
-        Converte arquivo Markdown para Google Docs com estilos Billion.
+        Converte arquivo Markdown para Google Docs com estilos Company.
 
         Args:
             md_path: Caminho do arquivo .md
@@ -307,7 +307,7 @@ class BillionDocsConverter:
         Returns:
             dict com documentId e url
         """
-        print(f"\n=== CONVERT TO BILLION DOCS ===")
+        print(f"\n=== CONVERT TO COMPANY DOCS ===")
         print(f"Arquivo: {md_path}")
 
         if not os.path.exists(md_path):
@@ -335,7 +335,7 @@ class BillionDocsConverter:
 
         # Criar documento
         target_folder = folder_id or self.config['google'].get('target_folder_id')
-        doc_id = self.create_document(f"[BILLION] {title}", target_folder)
+        doc_id = self.create_document(f"[COMPANY] {title}", target_folder)
         print(f"Documento criado: {doc_id}")
 
         # Construir requests para inserir conteudo
@@ -513,12 +513,12 @@ def main():
     md_path = sys.argv[1]
     folder_id = sys.argv[2] if len(sys.argv) > 2 else None
 
-    converter = BillionDocsConverter()
+    converter = CompanyDocsConverter()
     result = converter.convert(md_path, folder_id)
 
     if result and result.get('success'):
         print("\n" + "=" * 50)
-        print("DOCUMENTO BILLION CRIADO")
+        print("DOCUMENTO COMPANY CRIADO")
         print("=" * 50)
         print(f"Titulo: {result.get('title')}")
         print(f"URL: {result.get('url')}")

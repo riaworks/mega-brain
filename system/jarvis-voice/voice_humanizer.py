@@ -21,9 +21,9 @@ class VoiceHumanizer:
     Transforma texto em fala humanizada usando Audio Tags do ElevenLabs v3.
     """
 
-    ***REMOVED***==============================
+    #==============================
     # PADRÕES DE DETECÇÃO DE EMOÇÃO
-    ***REMOVED***==============================
+    #==============================
 
     EMOTION_PATTERNS = {
         # Sarcasmo / Ironia (JARVIS é mestre nisso)
@@ -92,9 +92,9 @@ class VoiceHumanizer:
         ],
     }
 
-    ***REMOVED***==============================
+    #==============================
     # MAPEAMENTO DE EMOÇÃO PARA AUDIO TAGS
-    ***REMOVED***==============================
+    #==============================
 
     EMOTION_TAGS = {
         "sarcasm": "[dry tone]",
@@ -105,9 +105,9 @@ class VoiceHumanizer:
         "formal": "[composed]",
     }
 
-    ***REMOVED***==============================
+    #==============================
     # PADRÕES DE SUBSTITUIÇÃO PARA NATURALIDADE
-    ***REMOVED***==============================
+    #==============================
 
     NATURALNESS_PATTERNS = [
         # Adicionar pausas dramáticas após pontos importantes
@@ -124,9 +124,9 @@ class VoiceHumanizer:
         (r"(\?.*\?)", r"[thoughtfully] \1"),
     ]
 
-    ***REMOVED***==============================
+    #==============================
     # FRASES DO JARVIS COM TAGS ESPECÍFICAS
-    ***REMOVED***==============================
+    #==============================
 
     # Frases que recebem tags NO INÍCIO (não substituição inline)
     # Formato: pattern -> tag a adicionar no início da frase
@@ -288,9 +288,9 @@ class VoiceHumanizer:
         return text.strip()
 
 
-***REMOVED***==============================
+#==============================
 # FACTORY
-***REMOVED***==============================
+#==============================
 
 _humanizer = None
 
@@ -307,9 +307,9 @@ def humanize_text(text: str) -> str:
     return get_humanizer().humanize(text)
 
 
-***REMOVED***==============================
+#==============================
 # TESTE
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     humanizer = VoiceHumanizer()

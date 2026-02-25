@@ -20,7 +20,7 @@ INPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jarvis_rob
 
 VOICE_NAME = "JARVIS-Robotic-v3"
 VOICE_DESCRIPTION = """Voz do JARVIS dos filmes Homem de Ferro 1, 2, 3 e Vingadores.
-Dublagem brasileira por Eduardo Borgerth com processamento robótico original dos filmes.
+Dublagem brasileira por [VOICE_ACTOR_NAME] com processamento robótico original dos filmes.
 Tom metálico, preciso, elegante.
 Características: processamento digital, leve reverb, clareza artificial.
 Extraído diretamente das cenas dos filmes da Marvel."""

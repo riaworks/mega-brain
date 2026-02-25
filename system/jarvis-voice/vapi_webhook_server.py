@@ -27,9 +27,9 @@ CORS(app)
 # Inicializa connector
 connector = MegaBrainConnector()
 
-***REMOVED***=================================
+#=================================
 # TOOLS DO MEGA BRAIN
-***REMOVED***=================================
+#=================================
 
 def tool_mission_status() -> dict:
     """Retorna status atual da missão."""
@@ -198,9 +198,9 @@ def tool_source_status(source_name: str) -> dict:
     return {"error": f"Fonte '{source_name}' não encontrada"}
 
 
-***REMOVED***=================================
+#=================================
 # VAPI WEBHOOK HANDLER
-***REMOVED***=================================
+#=================================
 
 @app.route('/vapi/webhook', methods=['POST'])
 def vapi_webhook():
@@ -301,9 +301,9 @@ def root():
     })
 
 
-***REMOVED***=================================
+#=================================
 # MAIN
-***REMOVED***=================================
+#=================================
 
 if __name__ == '__main__':
     print("=" * 60)

@@ -3,7 +3,7 @@
 CREATE JARVIS VOICE CLONE v5 - DUBLAGEM BRASILEIRA
 ===================================================
 Clone da voz do JARVIS com áudios ESPECIFICAMENTE da dublagem brasileira.
-Eduardo Borgerth - dublador oficial do JARVIS no Brasil.
+[VOICE_ACTOR_NAME] - dublador oficial do JARVIS no Brasil.
 
 Autor: JARVIS
 """
@@ -27,7 +27,7 @@ ISOLATED_DIR = f"{BASE_DIR}/jarvis_v5_isolated"
 
 VOICE_NAME = "JARVIS-Brasil-v5"
 VOICE_DESCRIPTION = """Voz do JARVIS - Dublagem BRASILEIRA oficial.
-Dublador: Eduardo Borgerth (São Paulo).
+Dublador: [VOICE_ACTOR_NAME].
 Extraído dos filmes Homem de Ferro e Vingadores - versão Brasil.
 Tom: processado, digital, robótico, elegante.
 Idioma: Português do BRASIL (PT-BR) exclusivamente."""
@@ -298,7 +298,7 @@ def main():
     print("JARVIS VOICE CLONE v5 - DUBLAGEM BRASILEIRA")
     print("=" * 60)
     print("\n🇧🇷 Objetivo: Voz 100% português do BRASIL")
-    print("🎭 Dublador: Eduardo Borgerth")
+    print("🎭 Dublador: [VOICE_ACTOR_NAME]")
     print("🤖 Tom: Robótico, processado, digital")
 
     # Fase 1
@@ -333,7 +333,7 @@ def main():
     print(f"📁 Segmentos extraídos: {extracted}")
     print(f"🔊 Segmentos isolados: {isolated}")
     print(f"📝 Nome: {VOICE_NAME}")
-    print(f"\n🇧🇷 Dublagem: BRASILEIRA (Eduardo Borgerth)")
+    print(f"\n🇧🇷 Dublagem: BRASILEIRA ([VOICE_ACTOR_NAME])")
     print(f"🤖 Tom: Máximo robótico (stability=0.90, style=0)")
     print(f"\n📂 Testes: {BASE_DIR}/test_v5_br_*.mp3")
     print("=" * 60)

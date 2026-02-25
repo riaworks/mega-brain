@@ -1,11 +1,11 @@
 #!/bin/bash
-***REMOVED***=================================
+#=================================
 # MEGA BRAIN — Pre-Push Validation Gate (PHYSICAL BLOCK)
-***REMOVED***=================================
+#=================================
 # PURPOSE: Block direct 'git push' — force all pushes through push.js validation.
 # DESIGN: fail-CLOSED — if validation fails or is bypassed, push is BLOCKED.
 # INSTALLED: 2026-02-20 (post-incident hardening)
-***REMOVED***=================================
+#=================================
 
 set -euo pipefail
 

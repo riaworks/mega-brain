@@ -51,9 +51,9 @@ try:
 except ImportError:
     CHRONICLER_AVAILABLE = False
 
-***REMOVED***================================
+#================================
 # CONFIGURAÇÃO DE ARQUIVOS CRÍTICOS
-***REMOVED***================================
+#================================
 
 CRITICAL_FILES = {
     'state': {
@@ -115,9 +115,9 @@ CRITICAL_FILES = {
     }
 }
 
-***REMOVED***================================
+#================================
 # UTILITÁRIOS
-***REMOVED***================================
+#================================
 
 def get_project_dir() -> str:
     """Obtém o diretório do projeto."""
@@ -158,9 +158,9 @@ def read_file_safe(filepath: Path) -> Optional[str]:
         return None
 
 
-***REMOVED***================================
+#================================
 # CARREGADORES DE ARQUIVOS
-***REMOVED***================================
+#================================
 
 def load_state() -> Optional[Dict]:
     """Carrega STATE.json."""
@@ -564,9 +564,9 @@ def load_boot_sequence() -> Dict:
     }
 
 
-***REMOVED***================================
+#================================
 # VERIFICAÇÃO DE INTEGRIDADE
-***REMOVED***================================
+#================================
 
 def check_system_integrity() -> Dict:
     """Verifica integridade de todos os arquivos críticos."""
@@ -606,9 +606,9 @@ def check_system_integrity() -> Dict:
     return integrity
 
 
-***REMOVED***================================
+#================================
 # GERAÇÃO DE PROMPT CONSOLIDADO
-***REMOVED***================================
+#================================
 
 def generate_consolidated_prompt(
     state: Optional[Dict],
@@ -680,9 +680,9 @@ Sou o parceiro operacional do senhor. Sou a consciência do Mega Brain.
     return '\n'.join(parts)
 
 
-***REMOVED***================================
+#================================
 # FORMATAÇÃO DE OUTPUT
-***REMOVED***================================
+#================================
 
 def get_greeting() -> str:
     """Retorna saudação apropriada."""
@@ -822,9 +822,9 @@ def get_jarvis_quote() -> str:
     return random.choice(quotes)
 
 
-***REMOVED***================================
+#================================
 # FUNÇÃO PRINCIPAL
-***REMOVED***================================
+#================================
 
 def main():
     """Função principal do hook v3."""

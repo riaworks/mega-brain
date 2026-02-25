@@ -34,7 +34,7 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 if not ANTHROPIC_API_KEY:
     raise ValueError("ANTHROPIC_API_KEY not set in environment")
 
-# Voz JARVIS clonada (Eduardo Borgerth - dublador oficial PT-BR)
+# Voz JARVIS clonada ([VOICE_ACTOR_NAME] - dublador oficial PT-BR)
 JARVIS_VOICE_ID = os.environ.get("ELEVENLABS_NARRATOR_VOICE_ID", "your-voice-id-here")
 
 # Diretório de output

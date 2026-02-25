@@ -98,9 +98,9 @@ class CreationValidator:
         else:
             return 0  # Pass
 
-    ***REMOVED***=============================
+    #=============================
     # DETECÇÃO DE TIPO
-    ***REMOVED***=============================
+    #=============================
 
     def _is_hook_creation(self, path: Path) -> bool:
         """Detecta se é criação/modificação de hook."""
@@ -137,9 +137,9 @@ class CreationValidator:
                 return True
         return False
 
-    ***REMOVED***=============================
+    #=============================
     # VALIDAÇÕES
-    ***REMOVED***=============================
+    #=============================
 
     def _validate_hook(self):
         """
@@ -287,9 +287,9 @@ class CreationValidator:
                     f"Regra Anthropic: definir limite de iterações"
                 )
 
-    ***REMOVED***=============================
+    #=============================
     # OUTPUT
-    ***REMOVED***=============================
+    #=============================
 
     def _output_warnings(self):
         """Output warnings em formato JSON para Claude processar."""

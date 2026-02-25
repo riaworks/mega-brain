@@ -42,9 +42,9 @@ import threading
 import atexit
 
 
-***REMOVED***=================================
+#=================================
 # CONFIGURATION
-***REMOVED***=================================
+#=================================
 
 class Config:
     """Configuracao centralizada do sistema de autosave."""
@@ -101,9 +101,9 @@ class ActionType(Enum):
     OTHER = "other"
 
 
-***REMOVED***=================================
+#=================================
 # DATA CLASSES
-***REMOVED***=================================
+#=================================
 
 @dataclass
 class Action:
@@ -169,9 +169,9 @@ class SessionData:
         return cls(**data)
 
 
-***REMOVED***=================================
+#=================================
 # SESSION MANAGER
-***REMOVED***=================================
+#=================================
 
 class SessionManager:
     """
@@ -273,9 +273,9 @@ class SessionManager:
                 pass
         return {}
 
-    ***REMOVED***=============================
+    #=============================
     # LOGGING ACTIONS
-    ***REMOVED***=============================
+    #=============================
 
     def log_action(self,
                    action_type: ActionType,
@@ -391,9 +391,9 @@ class SessionManager:
         self.session.conversation_summary = summary
         self._save_autosave_state()
 
-    ***REMOVED***=============================
+    #=============================
     # SAVE TRIGGERS
-    ***REMOVED***=============================
+    #=============================
 
     def trigger_batch_complete(self, batch_id: str, details: Dict = None) -> str:
         """Trigger: Batch completado."""
@@ -430,9 +430,9 @@ class SessionManager:
         )
         return self.save(SaveTrigger.TASK_COMPLETE)
 
-    ***REMOVED***=============================
+    #=============================
     # CORE SAVE LOGIC
-    ***REMOVED***=============================
+    #=============================
 
     def should_save(self, trigger: SaveTrigger = None) -> bool:
         """
@@ -863,9 +863,9 @@ class SessionManager:
             pass
 
 
-***REMOVED***=================================
+#=================================
 # GLOBAL API
-***REMOVED***=================================
+#=================================
 
 _session_manager: Optional[SessionManager] = None
 
@@ -1022,9 +1022,9 @@ def get_session_status() -> dict:
     }
 
 
-***REMOVED***=================================
+#=================================
 # CLI INTERFACE
-***REMOVED***=================================
+#=================================
 
 def main():
     """Interface de linha de comando."""

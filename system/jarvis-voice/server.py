@@ -38,9 +38,9 @@ from config import Config
 from mega_brain_connector import MegaBrainConnector
 from orchestrator import JARVIS_SYSTEM_PROMPT
 
-***REMOVED***==============================
+#==============================
 # TTS ENGINE - Sesame CSM-1B (estado da arte em humanização)
-***REMOVED***==============================
+#==============================
 
 # Flag para usar Sesame (True) ou ElevenLabs (False)
 # NOTA: Sesame requer login no HuggingFace. Para ativar:
@@ -62,9 +62,9 @@ def init_sesame():
             print(f"[TTS] Sesame não disponível: {e}")
             print("[TTS] Usando ElevenLabs como fallback")
 
-***REMOVED***==============================
+#==============================
 # CONFIGURAÇÃO
-***REMOVED***==============================
+#==============================
 
 app = FastAPI(title="JARVIS Command Center", version="1.0.0")
 
@@ -81,9 +81,9 @@ mega_brain = MegaBrainConnector()
 anthropic = Anthropic(api_key=Config.ANTHROPIC_API_KEY)
 
 
-***REMOVED***==============================
+#==============================
 # FERRAMENTAS DISPONÍVEIS PARA JARVIS
-***REMOVED***==============================
+#==============================
 
 JARVIS_TOOLS = [
     {
@@ -180,9 +180,9 @@ JARVIS_TOOLS = [
 ]
 
 
-***REMOVED***==============================
+#==============================
 # EXECUTOR DE FERRAMENTAS
-***REMOVED***==============================
+#==============================
 
 async def broadcast_log(message: str, type: str = "info"):
     """Envia log para todos os clientes conectados."""
@@ -339,9 +339,9 @@ async def execute_tool(tool_name: str, tool_input: Dict[str, Any]) -> str:
     return "Ferramenta não reconhecida"
 
 
-***REMOVED***==============================
+#==============================
 # PROCESSADOR DE MENSAGENS COM TOOL CALLING
-***REMOVED***==============================
+#==============================
 
 async def process_message(user_message: str) -> str:
     """Processa mensagem do usuário com possível execução de ferramentas."""
@@ -438,9 +438,9 @@ Após executar, resuma o resultado de forma conversacional para voz.
     return final_response
 
 
-***REMOVED***==============================
+#==============================
 # ENDPOINTS
-***REMOVED***==============================
+#==============================
 
 @app.get("/")
 async def root():
@@ -512,9 +512,9 @@ async def api_status():
     }
 
 
-***REMOVED***==============================
+#==============================
 # TTS (Text-to-Speech) - Sesame CSM + ElevenLabs Fallback
-***REMOVED***==============================
+#==============================
 
 async def generate_tts_sesame(text: str) -> str:
     """
@@ -601,9 +601,9 @@ async def generate_tts(text: str) -> str:
         return await generate_tts_elevenlabs(text)
 
 
-***REMOVED***==============================
+#==============================
 # MAIN
-***REMOVED***==============================
+#==============================
 
 if __name__ == "__main__":
     # Cria diretório static se não existir

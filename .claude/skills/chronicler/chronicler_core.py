@@ -17,16 +17,16 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
-***REMOVED***================================
+#================================
 # CONFIGURAÇÃO
-***REMOVED***================================
+#================================
 
 CHRONICLE_DIR = "logs/CHRONICLE"
 SESSION_HISTORY_DIR = f"{CHRONICLE_DIR}/session-history"
 
-***REMOVED***================================
+#================================
 # UTILITÁRIOS
-***REMOVED***================================
+#================================
 
 def get_project_dir() -> str:
     """Obtém o diretório do projeto."""
@@ -71,9 +71,9 @@ def count_files_in_dir(dirpath: Path, pattern: str = "*") -> int:
     return 0
 
 
-***REMOVED***================================
+#================================
 # COLETA DE DADOS
-***REMOVED***================================
+#================================
 
 def collect_system_state() -> Dict[str, Any]:
     """Coleta estado atual do sistema para o briefing."""
@@ -189,9 +189,9 @@ def get_next_session_number() -> int:
     return 1
 
 
-***REMOVED***================================
+#================================
 # GERAÇÃO DE BRIEFING
-***REMOVED***================================
+#================================
 
 def generate_chronicle_briefing() -> str:
     """Gera briefing visual completo."""
@@ -254,9 +254,9 @@ def generate_chronicle_briefing() -> str:
     return header + session_info + loops_section + system_section + action_section + footer
 
 
-***REMOVED***================================
+#================================
 # GERAÇÃO DE HANDOFF
-***REMOVED***================================
+#================================
 
 def generate_chronicle_handoff(
     tasks_completed: List[str] = None,
@@ -343,9 +343,9 @@ def generate_chronicle_handoff(
     return content
 
 
-***REMOVED***================================
+#================================
 # EVOLUTION LOG
-***REMOVED***================================
+#================================
 
 def append_to_evolution_log(entry_type: str, description: str):
     """Adiciona entrada ao Evolution Log (append-only)."""
@@ -373,9 +373,9 @@ def append_to_evolution_log(entry_type: str, description: str):
         f.write(entry)
 
 
-***REMOVED***================================
+#================================
 # SAVE/ARCHIVE
-***REMOVED***================================
+#================================
 
 def save_chronicle_briefing():
     """Salva briefing em SESSION-STATE.md."""
@@ -416,9 +416,9 @@ def save_chronicle_handoff(**kwargs):
     return str(handoff_path)
 
 
-***REMOVED***================================
+#================================
 # INTERFACE PARA HOOKS
-***REMOVED***================================
+#================================
 
 def on_session_start() -> str:
     """Chamado pelo session_start.py."""
@@ -444,9 +444,9 @@ def on_session_end(**kwargs) -> str:
     return handoff_path
 
 
-***REMOVED***================================
+#================================
 # MAIN (para testes)
-***REMOVED***================================
+#================================
 
 if __name__ == '__main__':
     import sys

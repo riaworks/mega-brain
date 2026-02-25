@@ -27,9 +27,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-***REMOVED***=================================
+#=================================
 # CONFIGURAÇÃO
-***REMOVED***=================================
+#=================================
 
 MEGA_BRAIN_ROOT = Path(".")
 MISSION_CONTROL = MEGA_BRAIN_ROOT / ".claude" / "mission-control"
@@ -43,9 +43,9 @@ DELTA_PENDING_FILE = MISSION_CONTROL / "DELTA-PENDING.json"
 # ID da planilha principal
 PLANILHA_ID = "[YOUR_SHEET_ID_HERE]"
 
-***REMOVED***=================================
+#=================================
 # MAPEAMENTO ABA → PREFIXO
-***REMOVED***=================================
+#=================================
 
 SHEET_TO_PREFIX: Dict[str, str] = {
     "Jeremy Miner": "JM",
@@ -86,9 +86,9 @@ PREFIX_TO_SOURCE: Dict[str, str] = {
     "CA": "JEREMY HAYNES PROGRAM",
 }
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES AUXILIARES
-***REMOVED***=================================
+#=================================
 
 def load_json(path: Path) -> dict:
     """Carrega arquivo JSON com tratamento de erro."""
@@ -123,9 +123,9 @@ def generate_next_tag(prefix: str, existing_tags: List[str]) -> str:
     next_num = max(existing_nums, default=0) + 1
     return f"{prefix}-{next_num:04d}"
 
-***REMOVED***=================================
+#=================================
 # FUNÇÕES PRINCIPAIS
-***REMOVED***=================================
+#=================================
 
 def load_snapshot() -> dict:
     """Carrega snapshot local da planilha."""
@@ -223,9 +223,9 @@ def save_delta_pending(novos_com_tag: List[dict], novos_sem_tag: List[dict]) -> 
     }
     save_json(delta, DELTA_PENDING_FILE)
 
-***REMOVED***=================================
+#=================================
 # MAIN
-***REMOVED***=================================
+#=================================
 
 def main():
     """Função principal - executa detecção de delta."""

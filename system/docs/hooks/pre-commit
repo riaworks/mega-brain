@@ -1,11 +1,11 @@
 #!/bin/bash
-***REMOVED***=================================
+#=================================
 # MEGA BRAIN — Pre-Commit Secret Scanner (PHYSICAL BLOCK)
-***REMOVED***=================================
+#=================================
 # PURPOSE: Prevent credentials, API keys, and PII from being committed.
 # DESIGN: fail-CLOSED — if scanning fails, commit is BLOCKED.
 # INSTALLED: 2026-02-20 (post-incident hardening)
-***REMOVED***=================================
+#=================================
 
 set -euo pipefail
 

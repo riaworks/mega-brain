@@ -27,9 +27,9 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 
-***REMOVED***==================================
+#==================================
 # CONFIGURACAO
-***REMOVED***==================================
+#==================================
 
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 INBOX_PATH = PROJECT_ROOT / "inbox"
@@ -44,9 +44,9 @@ IGNORE_PREFIXES = {"_", ".", "__"}
 IGNORE_FOLDERS = {"_BACKUP", "_OLD", "_ARCHIVE", "__pycache__"}
 
 
-***REMOVED***==================================
+#==================================
 # FUNCOES PRINCIPAIS
-***REMOVED***==================================
+#==================================
 
 
 def get_old_files(max_age_days: int = MAX_AGE_DAYS) -> List[Dict]:
@@ -292,9 +292,9 @@ def check_inbox_health() -> Dict:
     }
 
 
-***REMOVED***==================================
+#==================================
 # INTEGRACAO COM SESSION_START
-***REMOVED***==================================
+#==================================
 
 
 def get_session_context(old_files: List[Dict]) -> Dict:
@@ -320,9 +320,9 @@ def get_session_context(old_files: List[Dict]) -> Dict:
     }
 
 
-***REMOVED***==================================
+#==================================
 # MAIN
-***REMOVED***==================================
+#==================================
 
 
 def main():

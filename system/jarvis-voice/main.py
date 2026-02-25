@@ -21,9 +21,9 @@ from config import Config
 from orchestrator import JarvisOrchestrator
 
 
-***REMOVED***==============================
+#==============================
 # ASCII ART
-***REMOVED***==============================
+#==============================
 
 JARVIS_ASCII = """
 ╔═══════════════════════════════════════════════════════════════════════╗
@@ -76,9 +76,9 @@ JARVIS_SHUTDOWN = """
 """
 
 
-***REMOVED***==============================
+#==============================
 # MAIN CLASS
-***REMOVED***==============================
+#==============================
 
 class JarvisVoiceApp:
     """Aplicação principal do JARVIS Voice."""
@@ -237,9 +237,9 @@ class JarvisVoiceApp:
         return 0
 
 
-***REMOVED***==============================
+#==============================
 # ENTRY POINT
-***REMOVED***==============================
+#==============================
 
 def main():
     """Função principal."""

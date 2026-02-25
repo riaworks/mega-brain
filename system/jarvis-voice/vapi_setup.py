@@ -21,9 +21,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-***REMOVED***=================================
+#=================================
 # CONFIGURAÇÃO DO ASSISTENTE JARVIS
-***REMOVED***=================================
+#=================================
 
 JARVIS_CONFIG = {
     "name": "JARVIS - Mega Brain",
