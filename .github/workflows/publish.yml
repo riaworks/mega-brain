@@ -72,7 +72,8 @@ jobs:
 
           echo "Pattern scan for common API keys..."
           PATTERNS="ghp_|github_pat_|sk-ant-|sk-[a-zA-Z0-9]{48}|AKIA[0-9A-Z]{16}|eyJ[A-Za-z0-9_-]{20,}\\.eyJ"
-          if grep -rE "$PATTERNS" package/ --include='*.js' --include='*.json' --include='*.md' --include='*.yaml' --include='*.yml' --include='*.txt' --exclude='pre-publish-gate.js' 2>/dev/null; then
+          # Exclude files that contain detection patterns (not actual secrets)
+          if grep -rE "$PATTERNS" package/ --include='*.js' --include='*.json' --include='*.md' --include='*.yaml' --include='*.yml' --include='*.txt' --exclude='pre-publish-gate.js' --exclude='push.js' 2>/dev/null; then
             echo "::error::API key patterns found in package — publish BLOCKED"
             exit 1
           fi
