@@ -1,0 +1,217 @@
+From f54f0f98466718c96632fa44fb5607d4155141e5 Mon Sep 17 00:00:00 2001
+From: jmdri <contato@riaworks.com.br>
+Date: Sat, 28 Feb 2026 12:23:48 -0300
+Subject: [PATCH 1/2] fix(security): add missing timeouts to hooks + harden
+ deny list guidance
+
+Findings addressed:
+- L-06: Add timeout: 30000 to gsd-check-update.js and gsd-context-monitor.js hooks
+        (previously the only hooks without timeout, risking CLI hang)
+
+Note: settings.local.json fixes (C-02, C-03, C-04, L-05, L-13) are local-only
+and documented in the PR for manual application by developers.
+
+PR 2/7 of security remediation plan.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ .claude/settings.json | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/.claude/settings.json b/.claude/settings.json
+index 071bb68..ad16cb1 100644
+--- a/.claude/settings.json
++++ b/.claude/settings.json
+@@ -25,7 +25,8 @@
+         "hooks": [
+           {
+             "type": "command",
+-            "command": "node .claude/hooks/gsd-check-update.js"
++            "command": "node .claude/hooks/gsd-check-update.js",
++            "timeout": 30000
+           }
+         ]
+       }
+@@ -144,7 +145,8 @@
+         "hooks": [
+           {
+             "type": "command",
+-            "command": "node .claude/hooks/gsd-context-monitor.js"
++            "command": "node .claude/hooks/gsd-context-monitor.js",
++            "timeout": 30000
+           }
+         ]
+       }
+-- 
+2.52.0.windows.1
+
+
+From 571b72b7e1cbdd787e920ace806e0138d78c2a09 Mon Sep 17 00:00:00 2001
+From: jmdri <contato@riaworks.com.br>
+Date: Sat, 28 Feb 2026 12:24:03 -0300
+Subject: [PATCH 2/2] docs(security): add hardened settings.local.example.json
+ template
+
+Provides a secure reference template for settings.local.json with:
+- C-02: Specific Bash command patterns instead of unrestricted "Bash"
+- C-03: Correct single-level "permissions" structure (no double nesting)
+- C-04: Complete deny list (curl, wget, .env, .ssh, git push, npm publish)
+- L-05: Deny list aligned with ANTHROPIC-STANDARDS.md and settings.json
+- L-13: Write/Edit broad permissions kept with security justification
+
+Developers should copy this to settings.local.json and customize as needed.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ .claude/settings.local.example.json | 139 ++++++++++++++++++++++++++++
+ 1 file changed, 139 insertions(+)
+ create mode 100644 .claude/settings.local.example.json
+
+diff --git a/.claude/settings.local.example.json b/.claude/settings.local.example.json
+new file mode 100644
+index 0000000..1909531
+--- /dev/null
++++ b/.claude/settings.local.example.json
+@@ -0,0 +1,139 @@
++{
++  "permissions": {
++    "allow": [
++      "Read(**/*)",
++      "Write(**/*)",
++      "Edit(**/*)",
++      "Glob",
++      "Grep",
++      "WebFetch",
++      "WebSearch",
++      "Task",
++      "NotebookEdit",
++      "Skill(*)",
++      "Bash(git status:*)",
++      "Bash(git diff:*)",
++      "Bash(git log:*)",
++      "Bash(git branch:*)",
++      "Bash(git checkout:*)",
++      "Bash(git pull:*)",
++      "Bash(git fetch:*)",
++      "Bash(git merge:*)",
++      "Bash(git stash:*)",
++      "Bash(git show:*)",
++      "Bash(git rev-parse:*)",
++      "Bash(git remote:*)",
++      "Bash(git add:*)",
++      "Bash(git commit:*)",
++      "Bash(git rebase:*)",
++      "Bash(git cherry-pick:*)",
++      "Bash(git tag:*)",
++      "Bash(npm run:*)",
++      "Bash(npm test:*)",
++      "Bash(npm install:*)",
++      "Bash(npm ci:*)",
++      "Bash(npm ls:*)",
++      "Bash(npm outdated:*)",
++      "Bash(npm view:*)",
++      "Bash(npx:*)",
++      "Bash(node:*)",
++      "Bash(python3:*)",
++      "Bash(python:*)",
++      "Bash(pip:*)",
++      "Bash(pip3:*)",
++      "Bash(gh:*)",
++      "Bash(cat:*)",
++      "Bash(head:*)",
++      "Bash(tail:*)",
++      "Bash(ls:*)",
++      "Bash(find:*)",
++      "Bash(wc:*)",
++      "Bash(sort:*)",
++      "Bash(uniq:*)",
++      "Bash(diff:*)",
++      "Bash(echo:*)",
++      "Bash(printf:*)",
++      "Bash(mkdir:*)",
++      "Bash(cp:*)",
++      "Bash(mv:*)",
++      "Bash(touch:*)",
++      "Bash(pwd:*)",
++      "Bash(which:*)",
++      "Bash(env:*)",
++      "Bash(date:*)",
++      "Bash(jq:*)",
++      "Bash(sed:*)",
++      "Bash(awk:*)",
++      "Bash(grep:*)",
++      "Bash(rg:*)",
++      "Bash(cd:*)",
++      "Bash(test:*)",
++      "Bash([:*)",
++      "Bash(bun:*)",
++      "SlashCommand(/AIOS:agents:dev)",
++      "SlashCommand(/AIOS:agents:sm)",
++      "mcp__browser__puppeteer_navigate",
++      "mcp__browser__puppeteer_click",
++      "mcp__browser__puppeteer_screenshot",
++      "mcp__browser__puppeteer_fill",
++      "mcp__browser__puppeteer_evaluate",
++      "mcp__playwright__browser_fill_form",
++      "mcp__playwright__browser_snapshot",
++      "mcp__playwright__browser_type",
++      "mcp__playwright__browser_click",
++      "mcp__playwright__browser_navigate",
++      "mcp__playwright__browser_wait_for",
++      "mcp__playwright__browser_handle_dialog",
++      "mcp__playwright__browser_network_requests",
++      "mcp__playwright__browser_evaluate",
++      "mcp__playwright__browser_press_key",
++      "mcp__playwright__browser_console_messages",
++      "mcp__playwright__browser_close",
++      "mcp__playwright__browser_resize",
++      "mcp__playwright__browser_file_upload",
++      "mcp__playwright__browser_install",
++      "mcp__playwright__browser_navigate_back",
++      "mcp__playwright__browser_run_code",
++      "mcp__playwright__browser_take_screenshot",
++      "mcp__playwright__browser_drag",
++      "mcp__playwright__browser_hover",
++      "mcp__playwright__browser_select_option",
++      "mcp__playwright__browser_tabs",
++      "mcp__ide__getDiagnostics",
++      "mcp__ide__executeCode",
++      "mcp__exa__web_search_exa",
++      "mcp__exa__company_research_exa",
++      "mcp__exa__get_code_context_exa",
++      "mcp__context7__resolve-library-id",
++      "mcp__context7__query-docs"
++    ],
++    "deny": [
++      "Bash(rm -rf *)",
++      "Bash(rm:-rf *)",
++      "Bash(sudo *)",
++      "Bash(sudo:*)",
++      "Bash(curl:*)",
++      "Bash(wget:*)",
++      "Bash(mkfs:*)",
++      "Bash(dd if=/dev/zero:*)",
++      "Bash(chmod 777 *)",
++      "Bash(chmod -R 777 *)",
++      "Bash(git push *)",
++      "Bash(git push)",
++      "Bash(git push --force *)",
++      "Bash(git push --force)",
++      "Bash(git reset --hard *)",
++      "Bash(npm publish *)",
++      "Bash(npm publish)",
++      "Read(*.env)",
++      "Write(*.env)",
++      "Edit(*.env)",
++      "Read(*/.env)",
++      "Write(*/.env)",
++      "Edit(*/.env)",
++      "Read(~/.ssh/*)",
++      "Write(~/.ssh/*)",
++      "Edit(~/.ssh/*)"
++    ]
++  }
++}
+-- 
+2.52.0.windows.1
+

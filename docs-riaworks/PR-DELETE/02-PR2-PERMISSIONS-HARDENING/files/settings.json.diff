@@ -1,0 +1,24 @@
+diff --git a/.claude/settings.json b/.claude/settings.json
+index 071bb68..ad16cb1 100644
+--- a/.claude/settings.json
++++ b/.claude/settings.json
+@@ -25,7 +25,8 @@
+         "hooks": [
+           {
+             "type": "command",
+-            "command": "node .claude/hooks/gsd-check-update.js"
++            "command": "node .claude/hooks/gsd-check-update.js",
++            "timeout": 30000
+           }
+         ]
+       }
+@@ -144,7 +145,8 @@
+         "hooks": [
+           {
+             "type": "command",
+-            "command": "node .claude/hooks/gsd-context-monitor.js"
++            "command": "node .claude/hooks/gsd-context-monitor.js",
++            "timeout": 30000
+           }
+         ]
+       }
