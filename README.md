@@ -28,7 +28,7 @@ Built for solo entrepreneurs and small teams who want to operationalize the expe
 ## Quick Start
 
 ```bash
-# 1. Install dependencies (executar somente na primeira vez)
+# 1. Install dependencies (only in the first run)
 npm install
 
 # 2. Install and configure
