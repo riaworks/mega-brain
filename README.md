@@ -36,7 +36,7 @@ npx mega-brain-ai setup
 
 # 3. Fill in API keys when prompted (only OPENAI_API_KEY is required)
 
-# 3. Open Claude Code and check system status
+# 4. Open Claude Code and check system status
 /jarvis-briefing
 ```
 
