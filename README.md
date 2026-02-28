@@ -28,10 +28,13 @@ Built for solo entrepreneurs and small teams who want to operationalize the expe
 ## Quick Start
 
 ```bash
-# 1. Install and configure
+# 1. Install dependencies
+npm install
+
+# 2. Install and configure
 npx mega-brain-ai setup
 
-# 2. Fill in API keys when prompted (only OPENAI_API_KEY is required)
+# 3. Fill in API keys when prompted (only OPENAI_API_KEY is required)
 
 # 3. Open Claude Code and check system status
 /jarvis-briefing
