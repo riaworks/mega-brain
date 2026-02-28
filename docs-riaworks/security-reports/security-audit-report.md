@@ -2,9 +2,12 @@
 
 **Repositorio:** `mega-brain` (thiagofinch/mega-brain)
 **Data:** 2026-02-28
+**Revisado:** 2026-02-28 — Removidos findings de permissoes (arquivos analisados eram customizados, nao originais do pacote)
 **Auditor:** Claude Opus 4.6 (Analise Estatica)
 **Escopo:** Repositorio completo (1420 arquivos), 8 vetores de seguranca
 **Metodo:** Apenas analise estatica - nenhum codigo do repositorio foi executado
+
+> **ERRATA:** Os findings L5 e I2 referenciavam `.claude/settings.local.json` que e um arquivo customizado pelo usuario apos download, NAO parte do pacote original. O unico arquivo de configuracao distribuido no pacote e `settings.md`. Esses findings foram removidos desta versao.
 
 ---
 
@@ -21,8 +24,8 @@ Porem, **1 finding CRITICO** foi identificado no pipeline de CI/CD que requer at
 | CRITICO | 1 |
 | ALTO | 0 |
 | MEDIO | 6 |
-| BAIXO | 12 |
-| INFO | 4 |
+| BAIXO | 11 |
+| INFO | 3 |
 | Vetores LIMPOS | Rede, Ofuscacao, Git Hooks, Submodules, Desserializacao |
 
 ---
@@ -180,11 +183,9 @@ TOKEN_FILE = Path(r"~/.config/mcp-gdrive/.gdrive-server-credentials.json")
 - **Evidencia**: `https://x-access-token:${token}@github.com/...`
 - **Recomendacao**: Usar `GIT_ASKPASS` ou `http.extraHeader` no lugar.
 
-### L5: Deny List Nao Corresponde ao ANTHROPIC-STANDARDS.md
+### ~~L5: Deny List Nao Corresponde ao ANTHROPIC-STANDARDS.md~~ [REMOVIDO]
 
-- **Arquivo**: `.claude/settings.local.json:55-63`
-- **Avaliacao**: Faltam padroes `Bash(curl:*)`, `Bash(wget:*)`, `Read(*.env)`, `Read(~/.ssh/*)` que o proprio documento de standards do projeto exige.
-- **Recomendacao**: Alinhar deny list com ANTHROPIC-STANDARDS.md Secao 5.1.
+> **INVALIDADO:** Este finding referenciava `.claude/settings.local.json` que e arquivo customizado pelo usuario, nao parte do pacote original.
 
 ### L6: Dois Hooks Sem Configuracao de Timeout
 
@@ -214,9 +215,9 @@ TOKEN_FILE = Path(r"~/.config/mcp-gdrive/.gdrive-server-credentials.json")
 
 O projeto integra com 12+ APIs externas (OpenAI, Voyage AI, ElevenLabs, Supabase, Google Drive, Brave Search, N8N, ClickUp, Miro, Figma, Notion, GitHub). Todas usam variaveis de ambiente - nenhuma chave hardcoded. Isso esta correto mas representa uma grande superficie de gerenciamento de credenciais.
 
-### I2: Permissoes Locais Amplas em settings.local.json
+### ~~I2: Permissoes Locais Amplas em settings.local.json~~ [REMOVIDO]
 
-`settings.local.json` permite `Bash`, `Read(**/**)`, `Write(**/**)`, `Edit(**/**)`. Normal para desenvolvimento local mas representa superficie de ataque ampla se a sessao do Claude Code fosse comprometida. Arquivo e gitignored.
+> **INVALIDADO:** Este finding referenciava `.claude/settings.local.json` que e arquivo customizado pelo usuario, nao parte do pacote original.
 
 ### I3: Workflows de Review de PR Duplicados
 

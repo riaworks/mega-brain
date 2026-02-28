@@ -181,34 +181,15 @@ BLAST RADIUS MAXIMO:
   - post_batch_cascading.py comprometido -> corrupcao de toda a knowledge base
 ```
 
-### 2.3 Permissoes do Claude Code
+### ~~2.3 Permissoes do Claude Code~~ [SECAO INVALIDADA]
 
-```
-settings.json (distribuido, trackeado):
-  DENY LIST:
-    - rm -rf *, sudo *, chmod 777 *
-    - git push (TODAS as variacoes bloqueadas)
-    - npm publish (TODAS as variacoes bloqueadas)
-    - git reset --hard *
-  VEREDICTO: BEM configurado
+> **ERRATA:** Esta secao analisava `.claude/settings.local.json` que e um arquivo
+> customizado pelo usuario apos download, NAO parte do pacote original.
+> O unico arquivo de configuracao distribuido no pacote e `settings.md`.
+> Os findings C-02, C-03, C-04, L-05, L-13 derivados desta secao foram REMOVIDOS.
+> A secao original foi preservada abaixo riscada para referencia historica.
 
-settings.local.json (local, gitignored):
-  ALLOW LIST (PROBLEMATICO):
-    - "Bash"              <- IRRESTRITO (qualquer comando auto-aprovado)
-    - "Write(**/*)"       <- Escrita em qualquer arquivo
-    - "Edit(**/*)"        <- Edicao de qualquer arquivo
-    - "WebFetch"          <- Acesso web
-    - mcp__playwright__*  <- Automacao de browser completa
-    - mcp__puppeteer__*   <- Automacao de browser completa
-
-  DENY LIST (MAIS FRACA que settings.json):
-    - So bloqueia rm -rf /, mkfs, dd if=/dev/zero
-    - NAO replica bloqueios de git push, npm publish, sudo
-
-  BUG ESTRUTURAL: "permissions" aninhado dentro de "permissions" (ambiguidade)
-
-  VEREDICTO: RISCO ALTO para ambiente local de desenvolvimento
-```
+~~settings.local.json (local, gitignored) — ARQUIVO DO USUARIO, NAO DO PACOTE~~
 
 ### 2.4 MCP Servers
 
@@ -294,9 +275,9 @@ MITIGACAO ATUAL: Nenhuma. Confianca total no filesystem.
 
 | # | Acao | Componente | Esforco |
 |---|------|-----------|---------|
-| R1 | Corrigir settings.local.json: substituir `"Bash"` irrestrito por patterns especificos | Permissoes | 30min |
+| ~~R1~~ | ~~Corrigir settings.local.json~~ REMOVIDO (arquivo do usuario, nao do pacote) | — | — |
 | R2 | Adicionar timeout a gsd-check-update.js e gsd-context-monitor.js | Hooks | 5min |
-| R3 | Corrigir aninhamento duplo de "permissions" em settings.local.json | Permissoes | 15min |
+| ~~R3~~ | ~~Corrigir aninhamento duplo~~ REMOVIDO (arquivo do usuario, nao do pacote) | — | — |
 
 ### ALTAS (fazer esta semana)
 
@@ -304,7 +285,7 @@ MITIGACAO ATUAL: Nenhuma. Confianca total no filesystem.
 |---|------|-----------|---------|
 | R4 | Reduzir truncamento de continuous_save.py de 2000 para 200 chars (ou so metadados) | Hooks | 15min |
 | R5 | Implementar checksums para arquivos de personalidade lidos por session_start.py | Hooks | 2h |
-| R6 | Adicionar deny rules de git push e npm publish no settings.local.json | Permissoes | 10min |
+| ~~R6~~ | ~~Adicionar deny rules no settings.local.json~~ REMOVIDO (arquivo do usuario, nao do pacote) | — | — |
 
 ### MEDIAS (fazer este mes)
 

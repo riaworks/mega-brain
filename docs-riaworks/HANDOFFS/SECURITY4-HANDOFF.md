@@ -1,8 +1,10 @@
-# HANDOFF - PR 2 Permissions & Deny Lists (Completa)
+# ~~HANDOFF - PR 2 Permissions & Deny Lists~~ — INVALIDADO
 
 **Data:** 2026-02-28
-**Sessao:** Execucao da PR 2 de remediacao de seguranca
-**Status:** PR 1 MERGED | PR 2 OPEN | PRs 3-7 PENDENTES
+**Revisado:** 2026-02-28
+**Status:** **PR 2 INVALIDADA** — Todos os findings eram baseados em settings.local.json customizado pelo usuario, NAO do pacote original. O unico arquivo de config distribuido no pacote e `settings.md`.
+
+> **ERRATA:** Este handoff inteiro refere-se a PR2 que foi invalidada. Os findings C-02, C-03, C-04, L-05, L-06, L-13 foram removidos de toda a documentacao. Contagem real: 21 findings (1 CRITICAL), 6 PRs.
 
 ---
 
@@ -104,4 +106,4 @@ os relatorios de auditoria em portugues. Isso expoe o mapa de vulnerabilidades p
 
 ---
 
-*Handoff gerado em 2026-02-28 | PR 2/7 aberta | 11/27 findings corrigidos*
+*Handoff gerado em 2026-02-28 | INVALIDADO — PR2 removida | Real: 5/21 findings corrigidos*

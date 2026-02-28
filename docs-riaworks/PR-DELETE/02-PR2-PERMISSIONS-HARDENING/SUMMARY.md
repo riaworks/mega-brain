@@ -1,4 +1,10 @@
-# PR2 — Permissions & Deny List Hardening
+# ~~PR2 — Permissions & Deny List Hardening~~ — INVALIDADA
+
+> **ERRATA (2026-02-28):** Todos os 6 findings desta PR (C-02, C-03, C-04, L-05, L-06, L-13)
+> foram baseados em `.claude/settings.local.json` e `.claude/settings.json` que sao arquivos
+> **customizados pelo usuario apos download**, NAO arquivos originais do pacote.
+> O unico arquivo de configuracao distribuido no pacote original e `settings.md`.
+> Esta PR foi INVALIDADA por completo.
 
 **Commits originais:** `f54f0f9`, `571b72b`
 **Branch:** `fix/permissions-hardening`

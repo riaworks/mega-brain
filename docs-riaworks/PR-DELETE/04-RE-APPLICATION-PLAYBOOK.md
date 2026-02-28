@@ -52,33 +52,12 @@ gh pr create --repo riaworks/mega-brain --base main --head fix/cicd-security-har
   --body "Fixes C-01 (command injection), M-01 (TruffleHog pinning), L-01/L-02 (SHA pinning), L-08 (docs)"
 ```
 
-## Passo 3: Merge PR1, depois Re-aplicar PR2
+## ~~Passo 3: Merge PR1, depois Re-aplicar PR2~~ — INVALIDADO
 
-```bash
-# Após PR1 mergeada:
-git checkout main && git pull origin main
-git checkout -b fix/permissions-hardening
+> **PR2 foi invalidada.** Findings C-02, C-03, C-04, L-05, L-06, L-13 eram baseados em
+> settings.local.json customizado pelo usuario, nao do pacote original. NAO re-aplicar.
 
-# Aplicar patches
-git apply docs-riaworks/PR-DELETE/02-PR2-PERMISSIONS-HARDENING/files/settings.json.diff
-git add .claude/settings.json
-git commit -m "fix(security): add missing timeouts to hooks
-
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
-
-cp docs-riaworks/PR-DELETE/02-PR2-PERMISSIONS-HARDENING/files/settings.local.example.json .claude/
-git add .claude/settings.local.example.json
-git commit -m "docs(security): add hardened settings.local.example.json template
-
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
-
-git push -u origin fix/permissions-hardening
-gh pr create --repo riaworks/mega-brain --base main --head fix/permissions-hardening \
-  --title "fix(security): permissions hardening + deny list + hook timeouts" \
-  --body "Fixes C-02, C-03, C-04, L-05, L-06, L-13"
-```
-
-## Passo 4: PR Cross-Fork para Upstream (depois de merge no fork)
+## Passo 3: PR Cross-Fork para Upstream (depois de merge no fork)
 
 ```bash
 # Após AMBAS PRs mergeadas no fork:
@@ -87,7 +66,7 @@ gh pr create --repo thiagofinch/mega-brain --head riaworks:main --base main \
   --body "Security fixes without internal audit documentation"
 ```
 
-## Passo 5: Verificação Final
+## Passo 4: Verificação Final
 
 ```bash
 # Confirmar que docs-riaworks/ NÃO está no histórico do novo fork

@@ -26,7 +26,7 @@
 ## Risco
 
 Estes arquivos contêm o mapa completo de vulnerabilidades do repositório, incluindo:
-- Todos os 27 findings com localização exata
+- 21 findings válidos com localização exata (6 findings de permissões foram invalidados — baseados em arquivo customizado do usuario)
 - Vetores de ataque detalhados
 - Plano de remediação com cronograma
 - Inventário de todos os arquivos do repositório

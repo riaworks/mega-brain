@@ -3,7 +3,8 @@
 **Data:** 2026-02-28
 **Baseado em:** security-audit-report.md, recommendations.md, cyber-intelligence-report.md
 **Elaborado por:** Engenheiro de Seguranca (Claude Opus 4.6)
-**Total de Findings:** 27 (consolidado, sem duplicatas)
+**Total de Findings:** 21 (consolidado, sem duplicatas)
+**Revisado:** 2026-02-28 — 6 findings de permissoes REMOVIDOS (C-02, C-03, C-04, L-05, L-06, L-13 baseados em arquivo customizado do usuario, nao do pacote original). PR2 INVALIDADA. PRs renumeradas.
 
 ---
 
@@ -13,26 +14,29 @@
 +----------+-----------+-------------------------------------------------------+
 | Severity | Qtd       | Resumo                                                |
 +----------+-----------+-------------------------------------------------------+
-| CRITICO  |  4        | CI/CD injection, permissoes locais, estrutura config  |
+| CRITICO  |  1        | CI/CD injection                                       |
 | MEDIO    | 10        | Shell injection, upload paths, prompt injection, logs |
-| LOW      | 13        | Pinning, versioning, cache, consolidacao, tokens      |
+| LOW      | 10        | Pinning, versioning, cache, consolidacao, tokens      |
 +----------+-----------+-------------------------------------------------------+
-| TOTAL    | 27        | Agrupados em 7 PRs por dominio funcional              |
+| TOTAL    | 21        | Agrupados em 6 PRs por dominio funcional              |
 +----------+-----------+-------------------------------------------------------+
+
+NOTA: 6 findings removidos (C-02, C-03, C-04, L-05, L-06, L-13) — baseados em
+settings.local.json customizado pelo usuario, NAO arquivo original do pacote.
+O unico arquivo de config distribuido no pacote e settings.md.
 ```
 
 ---
 
 ## CLASSIFICACAO CONSOLIDADA DE FINDINGS
 
-### CRITICOS (4)
+### CRITICOS (1)
 
 | ID    | Finding                                                        | Fonte               | Arquivo(s)                                     |
 |-------|----------------------------------------------------------------|----------------------|------------------------------------------------|
 | C-01  | Injecao de comando via comentario de PR no GitHub Actions      | audit-report C1      | `.github/workflows/claude-code-pr.yml:82,110,118,123` |
-| C-02  | `"Bash"` irrestrito no allow list de settings.local.json       | cyber-intel R1       | `.claude/settings.local.json`                  |
-| C-03  | Aninhamento duplo de "permissions" em settings.local.json      | cyber-intel R3       | `.claude/settings.local.json`                  |
-| C-04  | Deny list local NAO replica bloqueios de git push/npm publish  | cyber-intel R6       | `.claude/settings.local.json`                  |
+
+> ~~C-02, C-03, C-04~~ REMOVIDOS — baseados em settings.local.json customizado pelo usuario, nao do pacote original.
 
 ### MEDIOS (10)
 
@@ -57,15 +61,15 @@
 | L-02  | npm install global no CI sem versao pinada                     | audit-report L2      | `.github/workflows/claude-code-pr.yml:99`      |
 | L-03  | Divergencia de versao package.json vs package-lock.json        | audit-report L3      | `package.json`, `package-lock.json`            |
 | L-04  | Token na URL do git clone (visivel em logs)                    | audit-report L4      | `bin/lib/installer.js:373`                     |
-| L-05  | Deny list nao alinhada com ANTHROPIC-STANDARDS.md              | audit-report L5      | `.claude/settings.local.json:55-63`            |
-| L-06  | Dois hooks sem timeout configurado                             | audit-report L6      | `settings.json` (gsd-check-update.js, gsd-context-monitor.js) |
+| ~~L-05~~  | ~~Deny list nao alinhada~~ REMOVIDO (settings.local.json customizado) | — | — |
+| ~~L-06~~  | ~~Dois hooks sem timeout~~ REMOVIDO (settings.json customizado) | — | — |
 | L-07  | Arquivos .pyc no disco (bytecode cache)                        | audit-report L7      | `.claude/hooks/__pycache__/`, etc.             |
 | L-08  | Workflows de review de PR duplicados (3 workflows)             | audit-report I3      | `claude.yml`, `claude-code-review.yml`, `claude-code-pr.yml` |
 | L-09  | Validar formato do token premium antes de uso                  | recommendations #12  | `bin/lib/installer.js`                         |
 | L-10  | Usar GIT_ASKPASS para clone autenticado                        | recommendations #13  | `bin/lib/installer.js`                         |
 | L-11  | gsd-check-update.js faz acesso a rede com processo detached    | cyber-intel R9       | `.claude/hooks/gsd-check-update.js`            |
 | L-12  | Layer validation do pre-publish gate e warn (nao fail-closed)  | cyber-intel R10      | `bin/pre-publish-gate.js`                      |
-| L-13  | Permissoes locais amplas (Write/Edit/**/*) em settings.local   | audit-report I2      | `.claude/settings.local.json`                  |
+| ~~L-13~~  | ~~Permissoes locais amplas~~ REMOVIDO (settings.local.json customizado) | — | — |
 
 ---
 
@@ -124,63 +128,16 @@ TESTES:
 
 ---
 
-### PR 2: [CRITICO] Fix Claude Code Permissions & Deny Lists
+### ~~PR 2: [CRITICO] Fix Claude Code Permissions & Deny Lists~~ — INVALIDADA
 
-**Prioridade:** P0 - IMEDIATA
-**Branch:** `fix/permissions-hardening`
-**Reviewer:** Security Lead
-
-#### Checklist:
-
-```
-FINDINGS: C-02, C-03, C-04, L-05, L-06, L-13
-
-Bash Irrestrito (C-02):
-[ ] settings.local.json - Substituir "Bash" irrestrito por patterns especificos
-[ ] Definir whitelist de comandos permitidos (ex: "Bash(git:*)", "Bash(npm:*)", "Bash(python3:*)")
-[ ] Ou remover "Bash" do allow e usar aprovacao manual
-
-Aninhamento Duplo de Permissions (C-03):
-[ ] settings.local.json - Corrigir estrutura: remover "permissions" aninhado dentro de "permissions"
-[ ] Validar que a estrutura final e aceita pelo Claude Code
-
-Deny List Incompleta (C-04 + L-05):
-[ ] Adicionar "Bash(curl:*)" ao deny
-[ ] Adicionar "Bash(wget:*)" ao deny
-[ ] Adicionar "Read(*.env)" ao deny
-[ ] Adicionar "Write(*.env)" ao deny
-[ ] Adicionar "Edit(*.env)" ao deny
-[ ] Adicionar "Read(*/.env)" ao deny
-[ ] Adicionar "Write(*/.env)" ao deny
-[ ] Adicionar "Edit(*/.env)" ao deny
-[ ] Adicionar "Read(~/.ssh/*)" ao deny
-[ ] Adicionar "Write(~/.ssh/*)" ao deny
-[ ] Adicionar "Edit(~/.ssh/*)" ao deny
-[ ] Replicar bloqueios de git push do settings.json
-[ ] Replicar bloqueios de npm publish do settings.json
-
-Hooks Sem Timeout (L-06):
-[ ] settings.json - Adicionar "timeout": 30 em gsd-check-update.js
-[ ] settings.json - Adicionar "timeout": 30 em gsd-context-monitor.js
-
-Permissoes Amplas (L-13):
-[ ] Avaliar reducao de Write(**/*) e Edit(**/*) para paths especificos
-[ ] Documentar decisao se manter amplo (justificativa de dev local)
-
-TESTES:
-[ ] Validar que Claude Code inicia sem erros de config
-[ ] Testar que comandos necessarios ainda funcionam
-[ ] Testar que deny list bloqueia curl, wget, .env, .ssh
-[ ] Confirmar que git push e npm publish sao bloqueados
-```
-
-**Arquivos afetados:**
-- `.claude/settings.local.json`
-- `.claude/settings.json`
+> **REMOVIDA:** Todos os 6 findings (C-02, C-03, C-04, L-05, L-06, L-13) eram baseados em
+> `.claude/settings.local.json` e `.claude/settings.json` customizados pelo usuario apos download.
+> O unico arquivo de configuracao distribuido no pacote original e `settings.md`.
+> Estes findings NAO representam vulnerabilidades do pacote.
 
 ---
 
-### PR 3: [MEDIO] Fix Shell Injection in Node.js CLI Tools
+### PR 2 (ex-PR 3): [MEDIO] Fix Shell Injection in Node.js CLI Tools
 
 **Prioridade:** P1 - ALTA (1 semana)
 **Branch:** `fix/shell-injection-cli`
@@ -221,7 +178,7 @@ TESTES:
 
 ---
 
-### PR 4: [MEDIO] Harden Python Hooks (Injection + Logging + Audit)
+### PR 3 (ex-PR 4): [MEDIO] Harden Python Hooks (Injection + Logging + Audit)
 
 **Prioridade:** P1 - ALTA (1 semana)
 **Branch:** `fix/hooks-security-hardening`
@@ -274,7 +231,7 @@ TESTES:
 
 ---
 
-### PR 5: [MEDIO] Harden Prompt Injection Defenses
+### PR 4 (ex-PR 5): [MEDIO] Harden Prompt Injection Defenses
 
 **Prioridade:** P2 - MEDIA (2 semanas)
 **Branch:** `fix/prompt-injection-defenses`
@@ -317,7 +274,7 @@ TESTES:
 
 ---
 
-### PR 6: [MEDIO] Harden Google Drive Integration
+### PR 5 (ex-PR 6): [MEDIO] Harden Google Drive Integration
 
 **Prioridade:** P2 - MEDIA (2 semanas)
 **Branch:** `fix/gdrive-path-validation`
@@ -356,7 +313,7 @@ TESTES:
 
 ---
 
-### PR 7: [LOW] Package Hygiene & Pre-Publish Hardening
+### PR 6 (ex-PR 7): [LOW] Package Hygiene & Pre-Publish Hardening
 
 **Prioridade:** P3 - BAIXA (1 mes)
 **Branch:** `chore/package-hygiene`

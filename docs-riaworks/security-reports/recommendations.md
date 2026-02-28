@@ -130,32 +130,13 @@ if not any(rel_path.startswith(d) for d in ALLOWED_DIRS):
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
 ```
 
-### 7. Alinhar Deny List com ANTHROPIC-STANDARDS.md
+### ~~7. Alinhar Deny List com ANTHROPIC-STANDARDS.md~~ [REMOVIDO]
 
-**Arquivo:** `.claude/settings.local.json`
+> **INVALIDADO:** Referenciava `.claude/settings.local.json` — arquivo customizado pelo usuario, nao do pacote original.
 
-Adicionar padroes de deny faltantes:
-```json
-"deny": [
-  "Bash(curl:*)",
-  "Bash(wget:*)",
-  "Read(*.env)",
-  "Write(*.env)",
-  "Edit(*.env)",
-  "Read(*/.env)",
-  "Write(*/.env)",
-  "Edit(*/.env)",
-  "Read(~/.ssh/*)",
-  "Write(~/.ssh/*)",
-  "Edit(~/.ssh/*)"
-]
-```
+### ~~8. Adicionar Timeouts nos Hooks que Estao Sem~~ [REMOVIDO]
 
-### 8. Adicionar Timeouts nos Hooks que Estao Sem
-
-**Arquivo:** `.claude/settings.json`
-
-Adicionar `"timeout": 30` nas entradas dos hooks `gsd-check-update.js` e `gsd-context-monitor.js`.
+> **INVALIDADO:** Referenciava `.claude/settings.json` customizado pelo usuario. O pacote original distribui apenas `settings.md`.
 
 ### 9. Corrigir Expansao de Path do OAuth
 

@@ -2,7 +2,8 @@
 
 **Data:** 2026-02-28
 **Sessao:** Execucao da PR 1 de remediacao de seguranca
-**Status:** PR 1 COMPLETA | PRs 2-7 PENDENTES
+**Status:** PR 1 COMPLETA | PRs 2-6 PENDENTES
+**Revisado:** 2026-02-28 — PR2 (Permissions) INVALIDADA. Findings baseados em arquivo customizado do usuario, nao do pacote original. Ver SECURITY5-HANDOFF.md para errata completa.
 
 ---
 
@@ -86,17 +87,8 @@ Claude Code Workflows:
 
 ### Semana 1 — P0 CRITICO
 
-#### PR 2: Fix Claude Code Permissions & Deny Lists
-- **Branch:** `fix/permissions-hardening`
-- **Findings:** C-02, C-03, C-04, L-05, L-06, L-13
-- **Arquivos:** `.claude/settings.local.json`, `.claude/settings.json`
-- **Escopo:**
-  - C-02: Remover `"Bash"` irrestrito do allow list
-  - C-03: Corrigir aninhamento duplo de `"permissions"`
-  - C-04: Completar deny list (curl, wget, .env, .ssh, git push, npm publish)
-  - L-05: Alinhar deny list com ANTHROPIC-STANDARDS.md
-  - L-06: Adicionar timeout a 2 hooks sem timeout
-  - L-13: Avaliar reducao de Write/Edit amplos
+#### ~~PR 2: Fix Claude Code Permissions & Deny Lists~~ — INVALIDADA
+> Todos os 6 findings (C-02, C-03, C-04, L-05, L-06, L-13) baseados em settings.local.json customizado pelo usuario, nao do pacote original.
 
 ### Semana 2 — P1 ALTO
 
@@ -185,4 +177,5 @@ docs-riaworks/
 
 ---
 
-*Handoff gerado em 2026-02-28 | PR 1/7 completa | 5/27 findings corrigidos*
+*Handoff gerado em 2026-02-28 | PR 1/6 completa | 5/21 findings corrigidos*
+*ERRATA: PR2 invalidada, 6 findings removidos. Total real: 21 findings, 6 PRs.*

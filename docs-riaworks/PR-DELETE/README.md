@@ -26,10 +26,10 @@ PR-DELETE/
 │   ├── SUMMARY.md                      ← Resumo do que foi corrigido
 │   ├── full-diff.patch                 ← Patch git para re-aplicar
 │   └── files/                          ← 6 workflow files (estado final)
-├── 02-PR2-PERMISSIONS-HARDENING/
-│   ├── SUMMARY.md                      ← Resumo do que foi corrigido
-│   ├── full-diff.patch                 ← Patch git para re-aplicar
-│   └── files/                          ← settings.json diff + example file
+├── 02-PR2-PERMISSIONS-HARDENING/       ← **INVALIDADA** (findings baseados em arquivo do usuario)
+│   ├── SUMMARY.md                      ← Marcado como INVALIDADO
+│   ├── full-diff.patch                 ← NAO APLICAR
+│   └── files/                          ← NAO APLICAR
 ├── 03-TOXIC-FILES-INVENTORY.md         ← Arquivos que foram expostos
 └── 04-RE-APPLICATION-PLAYBOOK.md       ← Passo a passo para re-aplicar
 ```
