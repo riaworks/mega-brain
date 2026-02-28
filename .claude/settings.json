@@ -25,8 +25,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node .claude/hooks/gsd-check-update.js",
-            "timeout": 30000
+            "command": "node .claude/hooks/gsd-check-update.js"
           }
         ]
       }
@@ -145,8 +144,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node .claude/hooks/gsd-context-monitor.js",
-            "timeout": 30000
+            "command": "node .claude/hooks/gsd-context-monitor.js"
           }
         ]
       }
@@ -203,6 +201,8 @@
       "Bash(chmod 777 *)",
       "Bash(git push --force *)",
       "Bash(git push --force)",
+      "Bash(git push *)",
+      "Bash(git push)",
       "Bash(git reset --hard *)",
       "Bash(npm publish *)",
       "Bash(npm publish)"
