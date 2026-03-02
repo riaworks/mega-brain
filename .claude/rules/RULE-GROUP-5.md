@@ -1,3 +1,10 @@
+---
+paths:
+  - "agents/**"
+  - "scripts/**"
+  - "core/intelligence/**"
+---
+
 # RULE-GROUP-5: VALIDATION
 
 > **Auto-Trigger:** Regras de validação, integridade e enforcement automático

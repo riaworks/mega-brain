@@ -1,3 +1,9 @@
+---
+paths:
+  - ".claude/sessions/**"
+  - "docs/plans/**"
+---
+
 # RULE-GROUP-2: PERSISTENCE
 
 > **Auto-Trigger:** Regras de persistência, continuidade de sessão e planejamento

@@ -1,3 +1,8 @@
+---
+paths:
+  - ".claude/rules/**"
+---
+
 # CLAUDE-LITE.md - MEGA BRAIN CORE (4KB)
 
 > **Versão:** 1.0.0
