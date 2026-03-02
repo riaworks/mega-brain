@@ -206,10 +206,12 @@ try {
     console.log(`${GREEN}[pre-publish] Layer validation PASSED: ${validation.totalFiles} files, all L1.${NC}`);
   }
 } catch (err) {
-  // Layer validation is best-effort in pre-publish gate.
-  // If Python or audit_layers.py not available, WARN but don't block.
-  console.warn(`${YELLOW}[pre-publish] Layer validation skipped: ${err.message}${NC}`);
-  console.warn(`${YELLOW}[pre-publish] Run 'node bin/validate-package.js' manually to validate.${NC}`);
+  // L-12 SECURITY FIX: Layer validation is fail-CLOSED (consistent with gate design).
+  // If Python or audit_layers.py not available, BLOCK publish to prevent bypass.
+  console.error(`${RED}[BLOCKED] Layer validation failed: ${err.message}${NC}`);
+  console.error(`${RED}[BLOCKED] Install Python 3 and ensure core/intelligence/audit_layers.py exists.${NC}`);
+  console.error(`${YELLOW}[pre-publish] Run 'node bin/validate-package.js' to diagnose.${NC}`);
+  foundIssues++;
 }
 
 // === VERDICT ===
