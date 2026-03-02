@@ -16,7 +16,8 @@ BRACKETS:
 INTEGRATION:
   - Runs at UserPromptSubmit, AFTER skill_router.py
   - Tracks prompt_count in STATE.json (mis.prompt_count)
-  - Reads from .claude/agent-memory/ (our existing data store)
+  - Reads from canonical agent path via AGENT-INDEX.yaml (resolve_agent_path.py)
+  - Fallback to .claude/agent-memory/ for unindexed agents
   - Returns feedback with memory hints when bracket warrants it
 
 FAIL-OPEN: Never blocks user input. Returns {"continue": true} on any error.
@@ -33,7 +34,15 @@ from pathlib import Path
 PROJECT_ROOT = Path(os.environ.get('CLAUDE_PROJECT_DIR', '.'))
 STATE_DIR = PROJECT_ROOT / ".claude" / "jarvis"
 STATE_FILE = STATE_DIR / "STATE.json"
-AGENT_MEMORY_DIR = PROJECT_ROOT / ".claude" / "agent-memory"
+
+# Import canonical path resolver (MOD-001: reads from agent directories, not .claude/agent-memory/)
+try:
+    sys.path.insert(0, str(PROJECT_ROOT / ".claude" / "hooks"))
+    from resolve_agent_path import resolve_memory_path
+    _HAS_RESOLVER = True
+except ImportError:
+    _HAS_RESOLVER = False
+    AGENT_MEMORY_DIR = PROJECT_ROOT / ".claude" / "agent-memory"
 
 # Context Brackets
 BRACKET_LAYER_MAP = {
@@ -120,8 +129,12 @@ def read_agent_memory_hints(agent_slug, max_lines, max_tokens):
     """
     Read memory hints from agent's MEMORY.md, respecting token budget.
     Reads from the END of the file (most recent entries) working backwards.
+    Uses canonical path resolver (AGENT-INDEX.yaml) with .claude/agent-memory/ fallback.
     """
-    memory_path = AGENT_MEMORY_DIR / agent_slug / "MEMORY.md"
+    if _HAS_RESOLVER:
+        memory_path = resolve_memory_path(PROJECT_ROOT, agent_slug)
+    else:
+        memory_path = AGENT_MEMORY_DIR / agent_slug / "MEMORY.md"
     if not memory_path.exists():
         return ""
 
