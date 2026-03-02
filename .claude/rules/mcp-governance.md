@@ -1,3 +1,8 @@
+---
+paths:
+  - ".mcp.json"
+---
+
 # MCP Governance Rules - Mega Brain
 
 > **Versão:** 1.0.0

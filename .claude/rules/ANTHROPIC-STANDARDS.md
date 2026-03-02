@@ -1,3 +1,10 @@
+---
+paths:
+  - ".claude/hooks/**"
+  - ".claude/skills/**"
+  - ".claude/jarvis/sub-agents/**"
+---
+
 # ANTHROPIC STANDARDS ENFORCEMENT
 
 > **Versão:** 1.0.0

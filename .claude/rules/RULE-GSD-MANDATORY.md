@@ -1,3 +1,9 @@
+---
+paths:
+  - ".planning/**"
+  - "docs/plans/**"
+---
+
 # RULE-GSD-MANDATORY: GSD Obrigatório para Planos
 
 > **Auto-Trigger:** Qualquer tarefa de planejamento ou implementação

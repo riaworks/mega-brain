@@ -1,3 +1,9 @@
+---
+paths:
+  - "agents/**"
+  - "knowledge/dna/**"
+---
+
 # EPISTEMIC-PROTOCOL
 
 > **Versão:** 1.0.0

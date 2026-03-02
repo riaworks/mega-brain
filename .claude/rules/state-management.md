@@ -1,3 +1,8 @@
+---
+paths:
+  - ".claude/mission-control/**"
+---
+
 # Regras de Gerenciamento de Estado
 
 ## 🔴 MISSION-STATE.json é SAGRADO
