@@ -23,21 +23,6 @@
             "type": "command",
             "command": "python3 .claude/hooks/session_index.py",
             "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/memory_bank_loader.py",
-            "timeout": 10000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/elicitation_reset.py",
-            "timeout": 3000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/token_monitor.py start",
-            "timeout": 5000
           }
         ]
       },
@@ -88,21 +73,6 @@
           {
             "type": "command",
             "command": "python3 .claude/hooks/memory_updater.py",
-            "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/elicitation_gate.py",
-            "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/document_trigger.py",
-            "timeout": 10000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/council_logger.py",
             "timeout": 5000
           }
         ]
@@ -166,27 +136,12 @@
           },
           {
             "type": "command",
-            "command": "python3 .aiox/hooks/dna_skill_generator.py",
-            "timeout": 15000
-          },
-          {
-            "type": "command",
             "command": "python3 .claude/hooks/claude_md_agent_sync.py",
             "timeout": 5000
           },
           {
             "type": "command",
             "command": "python3 .claude/hooks/pipeline_checkpoint.py",
-            "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/subagent_tracker.py",
-            "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/post_output_validator.py",
             "timeout": 5000
           }
         ]
@@ -246,16 +201,6 @@
             "type": "command",
             "command": "python3 .claude/hooks/agent_memory_persister.py",
             "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/session_log.py",
-            "timeout": 5000
-          },
-          {
-            "type": "command",
-            "command": "python3 .aiox/hooks/token_monitor.py",
-            "timeout": 10000
           }
         ]
       }
