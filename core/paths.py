@@ -94,6 +94,9 @@ ROUTING = {
     "workspace_inbox": KNOWLEDGE_WORKSPACE / "inbox",
     "personal_inbox": KNOWLEDGE_PERSONAL / "inbox",
     "external_inbox": KNOWLEDGE_EXTERNAL / "inbox",
+    # Log templates (L1 — mechanism, not data)
+    "workspace_log_template": CORE / "templates" / "logs" / "WORKSPACE-LOG-TEMPLATE.md",
+    "personal_log_template": CORE / "templates" / "logs" / "PERSONAL-LOG-TEMPLATE.md",
 }
 
 # ── PROHIBITED DIRECTORIES ───────────────────────────────────────
