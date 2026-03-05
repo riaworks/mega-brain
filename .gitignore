@@ -241,6 +241,11 @@ bilhon/
 # Antigravity agents (gerados pelo sync)
 .antigravity/rules/agents/
 
+# AIOS framework dirs
+.commands-bak/
+.agent/
+squads/
+
 # Commands injetados pelo AIOS
 .claude/commands/AIOS/
 .claude/commands/bilhon-docs/
