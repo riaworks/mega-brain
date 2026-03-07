@@ -159,6 +159,13 @@
     "format": "ruff format core/ .claude/hooks/",
     "test": "python3 -m pytest tests/python/ -v",
     "test:coverage": "python3 -m pytest tests/python/ -v --cov=core/intelligence --cov-report=term-missing",
+    "sync:ide": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync",
+    "sync:ide:claude": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync --ide claude-code",
+    "sync:ide:cursor": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync --ide cursor",
+    "sync:ide:windsurf": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync --ide windsurf",
+    "sync:ide:antigravity": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync --ide antigravity",
+    "sync:ide:validate": "node .aios-core/infrastructure/scripts/ide-sync/index.js validate",
+    "sync:ide:check": "node .aios-core/infrastructure/scripts/ide-sync/index.js validate --strict",
     "postinstall": "node bin/install-hooks.js",
     "prepublishOnly": "node bin/pre-publish-gate.js"
   },
@@ -179,6 +186,7 @@
   "dependencies": {
     "boxen": "^7.1.0",
     "chalk": "^5.3.0",
+    "fs-extra": "^11.3.4",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.0",
     "ora": "^7.0.0"

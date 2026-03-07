@@ -12,7 +12,7 @@
 - [ ] Resultado: PENDENTE
 
 ### Teste 2: Isolamento Business → Expert
-- [ ] Inserir arquivo de teste em knowledge/workspace/
+- [ ] Inserir arquivo de teste em workspace/
 - [ ] Executar query RAG em modo expert-only
 - [ ] Verificar que arquivo business NÃO aparece nos resultados
 - [ ] Resultado: PENDENTE

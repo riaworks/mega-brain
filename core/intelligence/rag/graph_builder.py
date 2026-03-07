@@ -281,7 +281,8 @@ def build_graph(dna_dir: Path | None = None) -> KnowledgeGraph:
 
                 # Determine label
                 label = (entry.get("nome") or entry.get("regra")
-                         or entry.get("declaracao") or entry_id)
+                         or entry.get("declaracao") or entry.get("crenca")
+                         or entry_id)
                 if isinstance(label, str) and len(label) > 100:
                     label = label[:100] + "..."
 
@@ -363,16 +364,29 @@ def _layer_to_type(layer: str) -> str:
 
 def _add_cross_layer_edges(graph: KnowledgeGraph, entry: dict,
                            entry_id: str, layer: str) -> None:
-    """Add cross-layer relationship edges."""
-    # filosofia_relacionada
+    """Add cross-layer relationship edges.
+
+    Supports both OLD format (relacionado_a: list) and
+    NEW format (filosofia_relacionada: string).
+    """
+    # filosofia_relacionada (string format)
     fil_ref = entry.get("filosofia_relacionada")
     if fil_ref and isinstance(fil_ref, str) and fil_ref.startswith("FIL-"):
         graph.add_edge(Edge(entry_id, fil_ref, "RELACIONADA_COM"))
 
-    # modelo_mental_relacionado
+    # modelo_mental_relacionado (string format)
     mm_ref = entry.get("modelo_mental_relacionado")
     if mm_ref and isinstance(mm_ref, str) and mm_ref.startswith("MM-"):
         graph.add_edge(Edge(entry_id, mm_ref, "RELACIONADA_COM"))
+
+    # relacionado_a (list format — OLD repo compatibility)
+    rel_list = entry.get("relacionado_a", [])
+    if isinstance(rel_list, str):
+        rel_list = [rel_list]
+    if isinstance(rel_list, list):
+        for ref in rel_list:
+            if isinstance(ref, str) and ref.startswith(("FIL-", "MM-", "HEUR-", "FW-", "MET-")):
+                graph.add_edge(Edge(entry_id, ref, "RELACIONADA_COM"))
 
     # Ontology hierarchy edges (layer → layer above)
     # Filosofia → ModeloMental → Heuristica → Framework → Metodologia
@@ -386,7 +400,12 @@ def _add_cross_layer_edges(graph: KnowledgeGraph, entry: dict,
     if layer in hierarchy:
         rel_type, ref_field = hierarchy[layer]
         if ref_field:
+            # Try new format first, then old format
             ref = entry.get(ref_field)
+            if not ref:
+                refs = entry.get("relacionado_a", [])
+                if isinstance(refs, list) and refs:
+                    ref = refs[0]  # Use first related item for hierarchy
             if ref and isinstance(ref, str):
                 graph.add_edge(Edge(ref, entry_id, rel_type))
 

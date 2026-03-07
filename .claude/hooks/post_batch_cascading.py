@@ -1745,12 +1745,19 @@ def main(batch_path: str = None):
             tool_input = hook_input.get('tool_input', {})
             batch_path = tool_input.get('file_path', '')
 
-            # Verificar se e um arquivo de batch
-            if 'BATCH' not in batch_path.upper():
+            # Verificar se e um arquivo de batch log (.md em logs/batches/)
+            # Ignore Python files and other non-batch files that happen to
+            # contain "BATCH" in their name (e.g., batch_governor.py)
+            is_batch_log = (
+                batch_path.upper().endswith('.MD')
+                and 'BATCH' in batch_path.upper()
+                and not batch_path.endswith('.py')
+            )
+            if not is_batch_log:
                 output = {
                     'continue': True,
                     'feedback': None,
-                    'note': 'Not a batch file, skipping cascading'
+                    'note': 'Not a batch log file, skipping cascading'
                 }
                 print(json.dumps(output))
                 return

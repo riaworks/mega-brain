@@ -68,7 +68,8 @@ class CreationValidator:
             Exit code: 0 (pass), 1 (warn), 2 (block)
         """
         if not self.file_path:
-            return 0  # Não conseguiu determinar arquivo, passa silenciosamente
+            print(json.dumps({"decision": "allow"}))
+            return 0
 
         path = Path(self.file_path)
 
@@ -83,6 +84,7 @@ class CreationValidator:
             self._validate_sdk_subagent()
         else:
             # Arquivo não é de tipo monitorado
+            print(json.dumps({"decision": "allow"}))
             return 0
 
         # Logar resultado
@@ -94,8 +96,9 @@ class CreationValidator:
             return 2  # Block
         elif self.warnings:
             self._output_warnings()
-            return 1  # Warn but continue
+            return 0  # Warn but allow
         else:
+            print(json.dumps({"decision": "allow"}))
             return 0  # Pass
 
     #=============================
@@ -293,23 +296,19 @@ class CreationValidator:
 
     def _output_warnings(self):
         """Output warnings em formato JSON para Claude processar."""
-        output = {
-            "status": "warning",
-            "file": self.file_path,
-            "warnings": self.warnings,
-            "message": f"Criação permitida com {len(self.warnings)} aviso(s). Revise conformidade Anthropic."
-        }
-        print(json.dumps(output, ensure_ascii=False))
+        msg = "; ".join(self.warnings)
+        print(json.dumps({
+            "decision": "allow",
+            "message": f"[Creation Validator] {msg}"
+        }, ensure_ascii=False))
 
     def _output_errors(self):
         """Output errors em formato JSON para Claude processar."""
-        output = {
-            "status": "blocked",
-            "file": self.file_path,
-            "errors": self.errors,
-            "message": f"Criação BLOQUEADA! {len(self.errors)} violação(ões) crítica(s) de segurança."
-        }
-        print(json.dumps(output, ensure_ascii=False))
+        msg = "; ".join(self.errors)
+        print(json.dumps({
+            "decision": "block",
+            "reason": f"[Creation Validator] {msg}"
+        }, ensure_ascii=False))
 
     def _log_validation(self):
         """Loga resultado da validação para auditoria."""
@@ -340,7 +339,8 @@ def main():
             tool_input = sys.stdin.read()
 
         if not tool_input.strip():
-            sys.exit(0)  # Sem input, passa
+            print(json.dumps({"decision": "allow"}))
+            sys.exit(0)
 
         validator = CreationValidator(tool_input)
         exit_code = validator.validate()
@@ -348,6 +348,7 @@ def main():
 
     except Exception:
         # Fail-OPEN: internal error = don't block user operations
+        print(json.dumps({"decision": "allow"}))
         sys.exit(0)
 
 

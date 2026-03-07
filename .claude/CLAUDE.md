@@ -32,10 +32,11 @@ mega-brain/
 ├── bin/            -> CLI tools (npm)
 ├── inbox/          -> Raw materials (L3)
 ├── artifacts/      -> Pipeline stages (L3)
+├── workspace/      -> Business data (L1 template, L2 populated)
 ├── knowledge/      -> Knowledge base
 │   ├── external/       -> Expert content (dna, dossiers, playbooks, sources)
-│   ├── workspace/      -> Generated artifacts (reports, analyses)
 │   └── personal/       -> User-specific content (notes, custom)
+├── .data/          -> Indexes (RAG, knowledge graph, memory) (L3)
 └── logs/           -> Session logs (L3)
 ```
 
@@ -50,7 +51,7 @@ When in plan mode, save the plan file to: `docs/plans/YYYY-MM-DD-description.md`
 |-------|---------|------------|
 | L1 (Community) | core/, agents/conclave, .claude/, bin/, docs/ | Tracked (npm package) |
 | L2 (Pro) | agents/cargo, knowledge/external/ (populated) | Tracked (premium) |
-| L3 (Personal) | .data/, .env, agents/persons, knowledge/personal/ | Gitignored |
+| L3 (Personal) | .data/, .env, agents/minds/, knowledge/personal/ | Gitignored |
 
 ## Community vs Pro
 
@@ -94,11 +95,11 @@ Defined in `AGENT-INDEX.yaml`, activated via slash commands.
 | Type | Count | Purpose |
 |------|-------|---------|
 | CARGO | 29 | Functional roles (Sales, Marketing, Ops) |
-| MINDS | 5 | Expert mind clones |
+| MINDS | 7 | Expert mind clones |
 | CONCLAVE | 3 | Multi-perspective deliberation |
 | SYSTEM | 2 | JARVIS, Agent-Creator |
 
-**Total Active Agents:** 37
+**Total Active Agents:** 39
 ## Configuration
 
 - **`.env`** is the ONLY source of truth for credentials

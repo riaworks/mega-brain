@@ -40,7 +40,7 @@ O Conclave opera em 3 dimensoes de contexto:
 
 Cada agente convocado DEVE ler os buckets permitidos pelo modo:
 - **B1 (External):** knowledge/external/dna/, knowledge/external/dossiers/, knowledge/external/playbooks/
-- **B2 (Workspace):** knowledge/workspace/, logs/WORKSPACE-LOG-TEMPLATE.md
+- **B2 (Workspace):** workspace/, logs/WORKSPACE-LOG-TEMPLATE.md
 - **B3 (Personal):** knowledge/personal/, logs/PERSONAL-LOG-TEMPLATE.md
 
 Os agentes NAO podem acessar buckets fora do modo selecionado.
@@ -56,7 +56,7 @@ Se um bucket NAO esta disponivel no modo selecionado:
 
 Quando em modo `business` ou `full-3d`:
 - Agentes DEVEM consultar dados reais do workspace (MRR, CAC, LTV, etc.)
-- Caminhos: knowledge/workspace/_finance/, WORKSPACE-LOG-TEMPLATE.md
+- Caminhos: workspace/_finance/, WORKSPACE-LOG-TEMPLATE.md
 - Se dados nao existem, declarar: "Dados financeiros nao conectados"
 
 ### Secao Obrigatoria na Resposta

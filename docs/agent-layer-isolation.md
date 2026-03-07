@@ -19,8 +19,8 @@
 
 ### Agentes L2 → L3
 - Agentes com dados de L3 ficam em knowledge/personal/ (gitignored)
-- Workspace agents com dados sensíveis: knowledge/workspace/_finance/ (gitignored)
-- Clone-data de colaboradores: knowledge/workspace/_team/**/clone-data/ (gitignored)
+- Workspace agents com dados sensíveis: workspace/_finance/ (gitignored)
+- Clone-data de colaboradores: workspace/_team/**/clone-data/ (gitignored)
 
 ### Implementação
 - `.gitignore` com regras por camada (Tarefa 7.1)

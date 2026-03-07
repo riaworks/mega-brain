@@ -1,21 +1,22 @@
 ---
-description: Ingere material sobre a empresa do usuário e roteia para agents/sua-empresa/
+description: Ingere material sobre a empresa do usuário e roteia para workspace/inbox/
 allowed-tools: Bash(cd:*), Bash(python:*), Read, Write, Edit, Glob, Grep
 argument-hint: [path or URL] [--type TYPE]
 ---
 
-# INGEST-EMPRESA - Ingestão de Material de Empresa
+# INGEST-EMPRESA - Ingestão de Material de Empresa (Bucket 2)
 
-> **Versão:** 1.0.0
-> **Pipeline:** Jarvis v2.1 → Routing para `agents/sua-empresa/`
+> **Versão:** 2.0.0
+> **Pipeline:** Jarvis v2.1 → Routing para `workspace/inbox/` → `bucket_processor.py workspace`
+> **Bucket:** 2 (Business Intelligence) — 🔴
 
 ---
 
 ## PROPÓSITO
 
-Processa material sobre a **empresa do usuário** (organograma, JDs, processos, KPIs) e roteia o output para a estrutura `agents/sua-empresa/`.
+Processa material sobre a **empresa do usuário** (organograma, JDs, processos, KPIs) e roteia para `workspace/inbox/`. O `bucket_processor.py` classifica e distribui para os subdirs corretos (`_org/`, `_team/`, `_finance/`, `_meetings/`, `_automations/`, `_tools/`).
 
-**Diferença do `/ingest`:** O `/ingest` roteia para `knowledge/` (expert minds). O `/ingest-empresa` roteia para `agents/sua-empresa/` (dados organizacionais).
+**Diferença do `/ingest`:** O `/ingest` roteia para `knowledge/external/inbox/` (expert minds). O `/ingest-empresa` roteia para `workspace/inbox/` (dados do negócio).
 
 ---
 
@@ -36,24 +37,25 @@ Processa material sobre a **empresa do usuário** (organograma, JDs, processos, 
 ## FLAGS OPCIONAIS
 
 ```
---type ORG|ROLE|JD|OPS|METRICS|SOW    # Força tipo de routing
---batch                                 # Processa todos os arquivos de uma pasta
+--type ORG|TEAM|FINANCE|MEETINGS|AUTOMATIONS|TOOLS    # Força subdir de destino
+--batch                                                 # Processa todos os arquivos de uma pasta
+--process                                               # Após salvar, executa bucket_processor.py
 ```
 
 ---
 
 ## ROUTING RULES
 
-O pipeline classifica cada material e roteia automaticamente:
+O pipeline classifica cada material e roteia automaticamente para `workspace/inbox/{subdir}/`:
 
-| Tipo de Conteúdo | Detecta | Destino |
-|------------------|---------|---------|
-| Organograma | "organograma", "org chart", "hierarquia", "estrutura" | `agents/sua-empresa/org/` |
-| Role (Cargo) | "cargo", "role", "função", "responsabilidades do" | `agents/sua-empresa/roles/` |
-| Job Description | "vaga", "job description", "JD", "contratação", "requisitos" | `agents/sua-empresa/jds/` |
-| Operações | "processo", "ritual", "daily", "standup", "ferramenta", "CRM" | `agents/sua-empresa/operations/` |
-| Métricas | "KPI", "meta", "métrica", "dashboard", "OKR", "resultado" | `agents/sua-empresa/metrics/` |
-| Scope of Work | "escopo", "SOW", "scope of work", "entregáveis" | `agents/sua-empresa/sow/` |
+| Tipo de Conteúdo | Detecta | Destino Inbox | Destino Final |
+|------------------|---------|---------------|---------------|
+| Organograma | "organograma", "org chart", "hierarquia", "headcount" | `workspace/inbox/org/` | `workspace/_org/` |
+| Team/RH | "cargo", "role", "JD", "contrata", "onboarding" | `workspace/inbox/team/` | `workspace/_team/` |
+| Financeiro | "MRR", "CAC", "LTV", "churn", "DRE", "receita", "budget" | `workspace/inbox/finance/` | `workspace/_finance/` |
+| Reuniões | "reunião", "meeting", "call", "standup", "daily", "ata" | `workspace/inbox/meetings/` | `workspace/_meetings/` |
+| Automações | "automação", "n8n", "zapier", "workflow", "integração" | `workspace/inbox/automations/` | `workspace/_automations/` |
+| Ferramentas | "CRM", "ferramenta", "software", "clickup", "slack" | `workspace/inbox/tools/` | `workspace/_tools/` |
 
 ---
 
@@ -74,103 +76,51 @@ ELSE IF $SOURCE is text:
 
 ```
 IF --type provided:
-  TYPE = $type_flag
+  SUBDIR = $type_flag (lowercase)
 ELSE:
   ANALYZE content keywords → match routing table above
   IF ambiguous:
     ASK user: "Este material parece ser sobre [X]. Confirma?"
 ```
 
-### Step 3: Extrair e Estruturar
+### Step 3: Salvar no Inbox
 
 ```
-BASED ON TYPE:
-
-ORG → Extract:
-  - Hierarquia (quem reporta a quem)
-  - Departamentos
-  - Headcount
-  - Scaling triggers
-  FORMAT: ORG-{COMPANY-NAME}.md
-
-ROLE → Extract:
-  - Nome do cargo
-  - Missão
-  - Responsabilidades
-  - KPIs
-  - Competências
-  FORMAT: ROLE-{CARGO-NAME}.md
-
-JD → Extract:
-  - Informações da vaga
-  - Requisitos obrigatórios/diferenciais
-  - Processo seletivo
-  FORMAT: JD-{CARGO-NAME}.md
-
-OPS → Extract:
-  - Nome do processo/ritual
-  - Frequência
-  - Participantes
-  - Passos
-  FORMAT: {PROCESS-NAME}.md
-
-METRICS → Extract:
-  - KPIs por cargo/departamento
-  - Metas e benchmarks
-  - Frequência de medição
-  FORMAT: KPI-{AREA}.md
-
-SOW → Extract:
-  - Cargo
-  - Entregáveis
-  - SLAs
-  - Ferramentas
-  FORMAT: SOW-{CARGO-NAME}.md
+DESTINATION = workspace/inbox/{SUBDIR}/{FILENAME}
+CREATE directory if not exists
+WRITE content to DESTINATION
 ```
 
-### Step 4: Salvar no Destino
+### Step 4: Processar (se --process)
 
 ```
-DESTINATION = agents/sua-empresa/{TYPE_FOLDER}/{FILENAME}
-WRITE structured content to DESTINATION
+IF --process flag:
+  python3 core/intelligence/pipeline/bucket_processor.py workspace
 ```
 
 ### Step 5: Report
 
 ```
-====================================================================
-                    INGEST-EMPRESA REPORT
+════════════════════════════════════════════════════════════════════════════════
+                    🔴 INGEST-EMPRESA REPORT
                     {TIMESTAMP}
-====================================================================
+════════════════════════════════════════════════════════════════════════════════
 
   MATERIAL PROCESSADO
    Fonte: {SOURCE}
    Tipo detectado: {TYPE}
 
   DESTINO
-   Path: agents/sua-empresa/{TYPE_FOLDER}/{FILENAME}
+   Inbox: workspace/inbox/{SUBDIR}/{FILENAME}
+   Final: workspace/_{SUBDIR}/{FILENAME} (após bucket_processor)
 
-  CONTEUDO EXTRAIDO
-   {Resumo do que foi extraído - 3-5 bullets}
+  PRÓXIMA ETAPA
+   - Processar inbox: python3 core/intelligence/pipeline/bucket_processor.py workspace
+   - Ver status: python3 core/intelligence/pipeline/bucket_processor.py
+   - Ingerir mais: /ingest-empresa [próximo arquivo]
 
-  PROXIMA ETAPA
-   - Revisar: Read agents/sua-empresa/{TYPE_FOLDER}/{FILENAME}
-   - Processar mais: /ingest-empresa [próximo arquivo]
-   - Ver estrutura: /agents sua-empresa
-
-====================================================================
+════════════════════════════════════════════════════════════════════════════════
 ```
-
----
-
-## REGRAS IMPORTANTES
-
-1. **Somente indivíduos identificados viram agentes** — temas viram dossiês, não agentes
-2. **Material sobre pessoa** → roteia para `roles/` ou `jds/` (não para `agents/persons/`)
-3. **Material sobre processo/operação** → roteia para `operations/`
-4. **Material sobre organograma** → roteia para `org/`
-5. **Material sobre métricas/KPIs** → roteia para `metrics/`
-6. **Na dúvida, perguntar** ao usuário o tipo correto
 
 ---
 
@@ -181,11 +131,14 @@ WRITE structured content to DESTINATION
 /ingest-empresa ./organograma-empresa.pdf
 
 # Processar JD de uma vaga
-/ingest-empresa ./vaga-closer.txt --type JD
+/ingest-empresa ./vaga-closer.txt --type team
 
 # Processar KPIs do time
 /ingest-empresa "O closer precisa fazer 5 calls/dia, converter 30%..."
 
 # Batch: processar pasta inteira
 /ingest-empresa ./docs-empresa/ --batch
+
+# Ingerir e já processar via bucket_processor
+/ingest-empresa ./ata-reuniao.md --process
 ```

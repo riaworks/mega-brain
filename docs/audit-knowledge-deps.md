@@ -97,7 +97,7 @@ Em vez de renomear `knowledge/` → `knowledge/external/`, a abordagem mais segu
 
 1. **Manter** `knowledge/` com subpastas atuais (dna, dossiers, playbooks, sources)
 2. **Criar** `knowledge/external/` como **alias/symlink** para as subpastas existentes
-3. **Criar** `knowledge/workspace/` e `knowledge/personal/` como pastas novas
+3. **Criar** `workspace/` e `knowledge/personal/` como pastas novas
 4. **Atualizar** `core/paths.py` com novos paths (KNOWLEDGE_EXTERNAL, KNOWLEDGE_WORKSPACE, KNOWLEDGE_PERSONAL)
 5. **Migrar** scripts incrementalmente para usar novos paths
 

@@ -24,16 +24,24 @@ ALTERNATIVES = {
 
 def main():
     try:
-        tool_input = json.loads(sys.stdin.read())
+        raw = sys.stdin.read()
+        if not raw.strip():
+            print(json.dumps({"decision": "allow"}))
+            sys.exit(0)
+
+        tool_input = json.loads(raw)
     except (json.JSONDecodeError, EOFError):
+        print(json.dumps({"decision": "allow"}))
         sys.exit(0)
 
     tool_name = tool_input.get("tool_name", "")
     if tool_name not in ("Write", "Edit"):
+        print(json.dumps({"decision": "allow"}))
         sys.exit(0)
 
     file_path = tool_input.get("tool_input", {}).get("file_path", "")
     if not file_path:
+        print(json.dumps({"decision": "allow"}))
         sys.exit(0)
 
     # Resolve to relative path from project root
@@ -43,6 +51,7 @@ def main():
         project_root = Path(__file__).resolve().parent.parent.parent
         rel = path.resolve().relative_to(project_root)
     except (ValueError, RuntimeError):
+        print(json.dumps({"decision": "allow"}))
         sys.exit(0)  # Outside project, not our concern
 
     # Check against prohibited directories
@@ -53,9 +62,10 @@ def main():
             f"[Directory Contract] Writing to '{top_dir}/' is prohibited. "
             f"Use: {alt}"
         )
-        print(json.dumps({"warning": msg}))
-        sys.exit(1)  # WARN, not block
+        print(json.dumps({"decision": "allow", "message": msg}))
+        sys.exit(0)
 
+    print(json.dumps({"decision": "allow"}))
     sys.exit(0)
 
 
