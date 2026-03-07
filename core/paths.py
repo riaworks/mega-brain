@@ -24,14 +24,15 @@ RULES = CLAUDE / "rules"
 SKILLS = CLAUDE / "skills"
 HOOKS = CLAUDE / "hooks"
 COMMANDS = CLAUDE / "commands"
+WORKSPACE = ROOT / "workspace"  # Business data (L1 template, L2 populated)
 
 # ── GITIGNORED (L3 / Runtime) ────────────────────────────────────
 LOGS = ROOT / "logs"
 INBOX = ROOT / "inbox"
 KNOWLEDGE = ROOT / "knowledge"
 KNOWLEDGE_EXTERNAL = KNOWLEDGE / "external"
-KNOWLEDGE_WORKSPACE = KNOWLEDGE / "workspace"
 KNOWLEDGE_PERSONAL = KNOWLEDGE / "personal"
+# KNOWLEDGE_WORKSPACE removed — workspace is now at root level (WORKSPACE)
 PROCESSING = ROOT / "processing"
 ARTIFACTS = ROOT / "artifacts"
 DATA = ROOT / ".data"
@@ -88,11 +89,11 @@ ROUTING = {
     # Trash (never delete, always move here)
     "trash": TRASH,
     # Knowledge buckets
-    "workspace_data": KNOWLEDGE_WORKSPACE,
+    "workspace_data": WORKSPACE,
     "personal_data": KNOWLEDGE_PERSONAL,
     "rag_expert": RAG_EXPERT,
     "rag_business": RAG_BUSINESS,
-    "workspace_inbox": KNOWLEDGE_WORKSPACE / "inbox",
+    "workspace_inbox": WORKSPACE / "inbox",
     "personal_inbox": KNOWLEDGE_PERSONAL / "inbox",
     "external_inbox": KNOWLEDGE_EXTERNAL / "inbox",
     # Log templates (L1 — mechanism, not data)

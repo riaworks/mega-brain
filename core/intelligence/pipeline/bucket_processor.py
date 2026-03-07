@@ -26,9 +26,9 @@ import yaml
 from core.paths import (
     KNOWLEDGE_EXTERNAL,
     KNOWLEDGE_PERSONAL,
-    KNOWLEDGE_WORKSPACE,
     LOGS,
     ROUTING,
+    WORKSPACE,
 )
 
 logger = logging.getLogger(__name__)
@@ -52,18 +52,18 @@ BUCKETS = {
         },
     },
     "workspace": {
-        "path": KNOWLEDGE_WORKSPACE,
+        "path": WORKSPACE,
         "inbox": ROUTING["workspace_inbox"],
         "color": "red",
         "label": "Business Intelligence",
         "layer": "L2/L3",
         "subdirs": {
-            "org": KNOWLEDGE_WORKSPACE / "_org",
-            "team": KNOWLEDGE_WORKSPACE / "_team",
-            "finance": KNOWLEDGE_WORKSPACE / "_finance",
-            "meetings": KNOWLEDGE_WORKSPACE / "_meetings",
-            "automations": KNOWLEDGE_WORKSPACE / "_automations",
-            "tools": KNOWLEDGE_WORKSPACE / "_tools",
+            "org": WORKSPACE / "_org",
+            "team": WORKSPACE / "_team",
+            "finance": WORKSPACE / "_finance",
+            "meetings": WORKSPACE / "_meetings",
+            "automations": WORKSPACE / "_automations",
+            "tools": WORKSPACE / "_tools",
         },
     },
     "personal": {

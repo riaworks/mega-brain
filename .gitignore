@@ -448,15 +448,9 @@ squads/
 !knowledge/external/inbox/
 !knowledge/external/inbox/.gitkeep
 
-# Knowledge workspace scaffolding L1/L2
-!knowledge/workspace/
-!knowledge/workspace/index.md
-!knowledge/workspace/MISSING-CONTEXT-LOG.md
-!knowledge/workspace/DETECTED-TOOLS-LOG.md
-!knowledge/workspace/SETUP-PENDING.md
-!knowledge/workspace/MASTER-INDEX.md
-!knowledge/workspace/inbox/
-!knowledge/workspace/inbox/.gitkeep
+# Workspace — root level (L1 template, L2 populated)
+!workspace/
+!workspace/**
 
 # Knowledge personal — L3 ONLY (never commit content)
 # The personal/.gitignore blocks everything except itself and index.md
@@ -502,8 +496,8 @@ squads/
 !knowledge/external/TAG-RESOLVER.json
 !knowledge/external/inbox/**
 
-# Knowledge workspace populado
-!knowledge/workspace/**
+# Workspace populado (root level, not inside knowledge/)
+# Already covered by !workspace/** in BLOCO 4
 
 # Expert agents populados
 !agents/minds/**

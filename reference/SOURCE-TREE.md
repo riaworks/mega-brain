@@ -15,10 +15,10 @@ mega-brain/
 ├── agents/               Knowledge agents (conclave, cargo, minds)
 ├── reference/            Documentation (guides, standards, ADRs)
 ├── docs/                 Legacy docs (migrating to reference/)
-├── knowledge/            Knowledge base (3 buckets)
+├── workspace/            Business data — L1 template, L2 populated (org, finance, meetings)
+├── knowledge/            Knowledge base (2 buckets)
 │   ├── external/         Expert content (dna, dossiers, playbooks)
-│   ├── workspace/        Business data (org, finance, meetings)
-│   └── personal/         Private content (email, calls, cognitive)
+│   └── personal/         Private content — L3 only (email, calls, cognitive)
 ├── artifacts/            Pipeline output (chunks, insights, canonical)
 ├── inbox/                Raw materials awaiting processing
 ├── logs/                 Session and batch logs
@@ -41,9 +41,9 @@ mega-brain/
 
 | Layer | Content | Git | npm |
 |-------|---------|-----|-----|
-| L1 (Community) | core/, bin/, agents/templates, .claude/ | Tracked | Published |
-| L2 (Pro) | agents/cargo/*, knowledge/external/* | Tracked | Premium |
-| L3 (Personal) | inbox/*, logs/*, .env, sessions | Gitignored | Never |
+| L1 (Community) | core/, bin/, agents/templates, .claude/, workspace/ (template) | Tracked | Published |
+| L2 (Pro) | agents/cargo/*, knowledge/external/*, workspace/ (populated) | Tracked | Premium |
+| L3 (Personal) | inbox/*, logs/*, knowledge/personal/*, .env, sessions | Gitignored | Never |
 | NEVER | .env, credentials, .DS_Store, __pycache__ | Blocked | Blocked |
 
 ---

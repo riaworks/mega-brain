@@ -7,7 +7,7 @@
 
 ---
 
-## Arquitetura Tridimensional (knowledge/)
+## Arquitetura Tridimensional (3 Buckets)
 
 ```
 knowledge/
@@ -17,20 +17,21 @@ knowledge/
 │   ├── playbooks/      → Actionable playbooks
 │   ├── sources/        → Source compilations
 │   └── inbox/          → Raw expert materials
-├── workspace/      ← Bucket 2: Business Data (L2/L3)
-│   ├── _org/           → Organization structure
-│   ├── _team/          → Team data
-│   ├── _finance/       → Financial data (L3)
-│   ├── _meetings/      → Meeting notes
-│   ├── _automations/   → Tool configs
-│   ├── _tools/         → Detected tools log
-│   └── inbox/          → Raw business materials
 └── personal/       ← Bucket 3: Cognitive/Private (L3 ONLY)
     ├── _email/         → Email digests
     ├── _messages/      → WhatsApp/Slack
     ├── _calls/         → Call transcripts
     ├── _cognitive/     → Mental models, reflections
     └── inbox/          → Raw personal materials
+
+workspace/              ← Bucket 2: Business Data (ROOT level, L1 template / L2 populated)
+├── _org/               → Organization structure
+├── _team/              → Team data
+├── _finance/           → Financial data
+├── _meetings/          → Meeting notes
+├── _automations/       → Tool configs
+├── _tools/             → Detected tools log
+└── inbox/              → Raw business materials
 ```
 
 ## Diretórios e Propósito
@@ -47,8 +48,8 @@ knowledge/
 | `artifacts/` | Generated Output | audit reports, validation | Gitignored |
 | `logs/` | Session Logs | batches, JSONL audit trails | Gitignored |
 | `inbox/` | Raw Materials | L3 personal content | Gitignored |
-| `knowledge/external/` | Bucket 1 | Expert dna, dossiers, playbooks | Gitignored |
-| `knowledge/workspace/` | Bucket 2 | Business data, org, finance | Gitignored |
+| `workspace/` | Bucket 2 | Business data, org, finance | Tracked (L1 template, L2 populated) |
+| `knowledge/external/` | Bucket 1 | Expert dna, dossiers, playbooks | Tracked (L2) |
 | `knowledge/personal/` | Bucket 3 | Cognitive, email, calls | Gitignored (L3) |
 | `research/` | Ad-hoc Analysis | L3 blueprints, deep-dives | Gitignored |
 | `processing/` | Pipeline Artifacts | speakers, entities, diarization | Gitignored |
@@ -70,7 +71,7 @@ knowledge/
 | `nav_map_builder.py` | `knowledge/external/` | `ROUTING["nav_map"]` |
 | `sow_generator.py` | `agents/sua-empresa/sow/` | `ROUTING["sow_output"]` |
 | `organized_downloader.py` | `inbox/` | `ROUTING["download"]` |
-| *(workspace scripts)* | `knowledge/workspace/` | `ROUTING["workspace_data"]` |
+| *(workspace scripts)* | `workspace/` | `ROUTING["workspace_data"]` |
 | *(personal scripts)* | `knowledge/personal/` | `ROUTING["personal_data"]` |
 
 ## RAG Isolation
@@ -97,7 +98,7 @@ from core.paths import ROUTING, KNOWLEDGE_EXTERNAL, KNOWLEDGE_WORKSPACE, KNOWLED
 # Correto: usar constante
 output = ROUTING["audit_report"] / "report.json"
 dna_path = KNOWLEDGE_EXTERNAL / "dna" / "persons" / "alex-hormozi"
-workspace = ROUTING["workspace_data"] / "_meetings"
+workspace = ROUTING["workspace_data"] / "_meetings"  # resolves to workspace/_meetings
 
 # Errado: hardcodar path
 output = Path("knowledge/dna/persons/alex-hormozi")  # PROIBIDO (stale path)
