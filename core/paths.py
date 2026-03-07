@@ -67,6 +67,7 @@ ROUTING = {
     "tool_usage": LOGS,
     "quality_gaps": LOGS,
     "dossier_trigger": LOGS,
+    "bucket_processing": LOGS / "bucket-processing",
     "autonomous_log": LOGS,
     # Knowledge & RAG
     "rag_chunks": RAG_EXPERT,
