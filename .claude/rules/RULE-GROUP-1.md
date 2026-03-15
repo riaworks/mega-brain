@@ -1,3 +1,10 @@
+---
+paths:
+  - "logs/**"
+  - ".claude/mission-control/**"
+  - "inbox/**"
+---
+
 # RULE-GROUP-1: PHASE-MANAGEMENT
 
 > **Auto-Trigger:** Regras de gerenciamento de fases e operações core

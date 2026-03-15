@@ -1,3 +1,10 @@
+---
+paths:
+  - "agents/**"
+  - ".claude/agent-memory/**"
+  - "knowledge/dna/**"
+---
+
 # AGENT-COGNITION-PROTOCOL
 
 > **Versão:** 1.2.0

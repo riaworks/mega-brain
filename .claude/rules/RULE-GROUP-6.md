@@ -1,3 +1,10 @@
+---
+paths:
+  - ".claude/skills/**"
+  - ".claude/jarvis/**"
+  - ".github/**"
+---
+
 # RULE-GROUP-6: AUTO-ROUTING
 
 > **Auto-Trigger:** Regras de auto-routing de skills, sub-agents, qualidade e GitHub workflow

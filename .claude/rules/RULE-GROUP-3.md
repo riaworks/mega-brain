@@ -1,3 +1,9 @@
+---
+paths:
+  - ".claude/mission-control/**"
+  - "core/templates/**"
+---
+
 # RULE-GROUP-3: OPERATIONS
 
 > **Auto-Trigger:** Regras de operações, paralelismo e contexto de negócio

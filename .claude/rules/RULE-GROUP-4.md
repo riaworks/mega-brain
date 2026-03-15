@@ -1,3 +1,10 @@
+---
+paths:
+  - "agents/**"
+  - "knowledge/**"
+  - "logs/batches/**"
+---
+
 # RULE-GROUP-4: PHASE-5-SPECIFIC
 
 > **Auto-Trigger:** Regras específicas da Fase 5 e cascateamento de conhecimento

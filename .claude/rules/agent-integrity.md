@@ -1,3 +1,10 @@
+---
+paths:
+  - "agents/**"
+  - ".claude/agent-memory/**"
+  - "knowledge/dna/**"
+---
+
 # AGENT-INTEGRITY-PROTOCOL
 # Protocolo de Integridade e Fidelidade de Agentes
 
